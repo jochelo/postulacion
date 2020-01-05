@@ -16,7 +16,8 @@ class DatabaseSeeder extends Seeder
     {
         // $this->call(UsersTableSeeder::class);
         $cargo = Cargo::create([
-            'cargo_descripcion' => 'Administrador'
+            'nivel_maximo' => 1,
+            'cargo_descripcion' => 'Administrador',
         ]);
         $nivel = Nivel::create([
             'nivel_numero' => 0,
@@ -63,6 +64,7 @@ class DatabaseSeeder extends Seeder
         ];
         foreach ($cargos as $cargoItem) {
             Cargo::create([
+                'nivel_maximo' => 1,
                 'cargo_descripcion' => $cargoItem
             ]);
         }

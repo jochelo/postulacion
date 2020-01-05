@@ -11,7 +11,8 @@ class Cargo extends Model
     protected $table = 'cargos';
     protected $primaryKey = 'cargo_id';
     protected $fillable = [
-        'cargo_descripcion'
+        'nivel_maximo',
+        'cargo_descripcion',
     ];
     protected $dates = ['deleted_at'];
 }

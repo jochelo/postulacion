@@ -40,7 +40,7 @@ class CreateUsersTable extends Migration
             $table->string('casilla_postal')->nullable();
 
             $table->string('numero_libreta_militar')->default('_');
-            $table->boolean('contratado')->default(false);
+            $table->boolean('aprobado')->default(false);
             $table->boolean('nivel_completo')->default(false);
             $table->boolean('es_admin')->default(false);
 

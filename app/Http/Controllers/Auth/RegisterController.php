@@ -4,11 +4,14 @@ namespace App\Http\Controllers\Auth;
 
 use App\Cargo;
 use App\Http\Controllers\Controller;
+use App\Nivel;
 use App\Providers\RouteServiceProvider;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -59,12 +62,11 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'nombres' => ['required', 'string', 'max:191'],
+            'email' => ['required', 'string', 'email', 'max:191', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
-
     /**
      * Create a new user instance after a valid registration.
      *
@@ -73,10 +75,26 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+
+    }
+    protected function registrar(Request $request)
+    {
+        $usuario= $request->all();
+        //dd($usuario);
+
+        $nivel_bajo=Nivel::where('nivel_numero','=',0)->first();
+
+        $img = $request->file('credencializacion_fotografia');
+        dd($img);
+
+        $nomimg = time() . '_' . $img->getClientOriginalName();
+ //       Storage::disk('s3')->put('postulacion/imgUsr/'.$nomimg, file_get_contents($img->getRealPath()),'public');
+
+//        $usuario['credencializacion_fotografia']=env('AWS_URL').'/postulacion/imgUsr/'.$nomimg;
+        $usuario['credencializacion_fotografia']='/postulacion/imgUsr/'.$nomimg;
+        $usuario['nivel_id'] = $nivel_bajo['nivel_id'];
+        $usuario['password'] = Hash::make($usuario['password']);
+        User::create($usuario);
+        return view('auth.register');
     }
 }
