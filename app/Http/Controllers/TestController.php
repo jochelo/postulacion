@@ -2,10 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Cargo;
+use App\Nivel;
+use App\Test;
 use Illuminate\Http\Request;
 
 class TestController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +20,8 @@ class TestController extends Controller
      */
     public function index()
     {
-        //
+        $tests=Test::get();
+        return view('test.index',compact('tests'));
     }
 
     /**
@@ -23,7 +31,9 @@ class TestController extends Controller
      */
     public function create()
     {
-        //
+        $niveles=Nivel::get();
+        $cargos=Cargo::get();
+        return view('test.create',compact('niveles','cargos'));
     }
 
     /**
@@ -34,7 +44,13 @@ class TestController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $test=$request->all();
+        if(isset($test['activo']))
+            $test['activo']=true;
+        else
+            $test['activo']=false;
+        Test::create($test);
+        return redirect('tests/');
     }
 
     /**
@@ -45,7 +61,8 @@ class TestController extends Controller
      */
     public function show($id)
     {
-        //
+        $test=Test::find($id);
+        return view('test.show',compact('test'));
     }
 
     /**
@@ -56,7 +73,8 @@ class TestController extends Controller
      */
     public function edit($id)
     {
-        //
+        $test=Test::find($id);
+        return view('test.edit',compact('test'));
     }
 
     /**
@@ -68,7 +86,14 @@ class TestController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $test=Test::find($id);
+        $datos=$request->all();
+        if(isset($test['activo']))
+            $datos['activo']=true;
+        else
+            $datos['activo']=false;
+        $test->update($datos);
+        return redirect('tests/');
     }
 
     /**
@@ -79,6 +104,8 @@ class TestController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $test=Test::find($id);
+        $test->delete();
+        return redirect('tests/');
     }
 }

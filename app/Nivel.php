@@ -16,4 +16,13 @@ class Nivel extends Model
         'num_requisitos',
     ];
     protected $dates = ['deleted_at'];
+    public function users(){
+        return $this->hasMany('App\User');
+    }
+    public function tests(){
+        return $this->hasMany('App\Test');
+    }
+    public function requisitos(){
+        return $this->hasMany('App\Requisito');
+    }
 }

@@ -17,4 +17,8 @@ class Requisito extends Model
         'con_archivo_adjunto'
     ];
     protected $dates = ['deleted_at'];
+
+    public function nivel(){
+        return $this->belongsTo('App\Nivel');
+    }
 }

@@ -31,6 +31,7 @@
         Menu
     </div>
     <!-- Nav Item - Charts -->
+    @guest
     <li class="nav-item">
         <a class="nav-link" href="{{route('login')}}">
             <i class="fas fa-fw fa-user"></i>
@@ -42,6 +43,18 @@
             <i class="fas fa-fw fa-sign-in-alt"></i>
             <span>Registro</span></a>
     </li>
+    @else
+        <li class="nav-item">
+            <a class="nav-link" href="{{url('/tests')}}">
+                <i class="fas fa-fw fa-file"></i>
+                <span>Test</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{url('/preguntas')}}">
+                <i class="fas fa-fw fa-list-alt"></i>
+                <span>Preguntas</span></a>
+        </li>
+    @endguest
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
     <!-- Sidebar Toggler (Sidebar) -->

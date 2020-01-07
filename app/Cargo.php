@@ -15,4 +15,11 @@ class Cargo extends Model
         'cargo_descripcion',
     ];
     protected $dates = ['deleted_at'];
+
+    public function users(){
+        return $this->hasMany('App\User');
+    }
+    public function tests(){
+        return $this->hasMany('App\Test');
+    }
 }

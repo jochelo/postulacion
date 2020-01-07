@@ -16,4 +16,9 @@ class Respuesta extends Model
         'pregunta_id',
     ];
     protected $dates=['deleted_at'];
+
+
+    public function pregunta(){
+        return $this->belongsTo('App\Pregunta');
+    }
 }

@@ -2,18 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\Pregunta;
+use App\Test;
 use Illuminate\Http\Request;
 
 class PreguntaController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
-        //
+        $tests=Test::get();
+        return view('pregunta.index',compact('tests'));
     }
 
     /**
@@ -34,7 +42,9 @@ class PreguntaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $dato=$request->all();
+        Pregunta::create($dato);
+        return redirect('preguntas/');
     }
 
     /**
