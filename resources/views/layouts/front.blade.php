@@ -17,7 +17,7 @@
           rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="/index/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="/index/css/sb-admin-2.css" rel="stylesheet">
     <link href="/css/estilos.css" rel="stylesheet">
 
 </head>

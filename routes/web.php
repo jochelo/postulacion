@@ -20,4 +20,6 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('/tests','TestController');
 Route::resource('/preguntas','PreguntaController');
+Route::get('preguntas-test', 'TestController@preguntasTestGet');
+Route::post('preguntas-test','TestController@preguntasTest');
 

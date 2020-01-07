@@ -1,3 +1,10 @@
+<style>
+    button.nav-link {
+        border: none;
+        background: #e2872c;
+        color: white;
+    }
+</style>
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
@@ -50,9 +57,13 @@
                 <span>Test</span></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="{{url('/preguntas')}}">
-                <i class="fas fa-fw fa-list-alt"></i>
-                <span>Preguntas</span></a>
+            <form action="{{ url('preguntas-test') }}" method="post">
+                @csrf
+                <input type="hidden" name="test_id" value="0">
+                <button class="nav-link" type="submit">
+                    <i class="fas fa-fw fa-list-alt"></i>
+                    <span>Preguntas</span></button>
+            </form>
         </li>
     @endguest
     <!-- Divider -->

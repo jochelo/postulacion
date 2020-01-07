@@ -1,5 +1,138 @@
 @extends('layouts.front')
+
 @section('content')
+    <div class="container">
+        <div class="row">
+            <div class="offset-2 col-md-8">
+                @if($state === 'list')
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <h3>Preguntas</h3>
+                                </div>
+                                <div class="col-lg-8">
+                                    <form action="{{ url('preguntas-test') }}" method="post">
+                                        @csrf
+                                        <select name="test_id"
+                                                class="form-control"
+                                                id="test_id">
+                                            @foreach($tests as $test)
+                                                <option
+                                                    @if ($test['test_id'] == $test_id)
+                                                    selected = "selected"
+                                                    @endif
+                                                    value="{{ $test['test_id'] }}">{{ $test['titulo'] }}</option>
+                                            @endforeach
+                                        </select>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th>N.</th>
+                                        <th>Test</th>
+                                        <th>Pregunta</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach($preguntas as $pregunta)
+                                        <tr>
+                                            <td>{{ $loop->index + 1 }}</td>
+                                            <td>{{ $pregunta['test_titulo'] }}</td>
+                                            <td>{{ $pregunta['pregunta_titulo'] }}</td>
+                                            <td>
+                                                <form action="{{ url('preguntas-test') }}" method="post">
+                                                    @csrf
+                                                    <input type="hidden" name="state" value="list-respuestas">
+                                                    <input type="hidden" name="test_id" value="{{ $test_id }}">
+                                                    <input type="hidden" name="pregunta" value="{{ (string) $pregunta }}">
+                                                    <button type="submit" class="btn btn-primary btn-sm">
+                                                        <strong>R</strong> <i class="fa fa-plus"></i>
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                @endif
+                @if($state === 'list-respuestas')
+                    <div class="card">
+                        <div class="card-header">
+                            <h3><strong>{{ $pregunta['test_titulo'] }}</strong></h3>
+                            <h4><strong>{{ $pregunta['pregunta_titulo'] }}</strong></h4>
+                        </div>
+                        <div class="card-body">
+                            <form action="{{ url('preguntas-test') }}" method="post">
+                                @csrf
+                                <div class="row">
+                                    <div class="col-md-8 form-group">
+                                        <input type="hidden" name="pregunta_id" value="{{ (int)$pregunta['pregunta_id'] }}">
+                                        <input type="hidden" name="pregunta" value="{{ (string) $pregunta }}">
+                                        <input type="hidden" name="state" value="create-respuesta">
+                                        <input type="hidden" name="test_id" value="{{ $test_id }}">
+                                        <input type="text" name="respuesta_descripcion" class="form-control">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <button class="btn btn-primary btn-block">
+                                            <i class="fa fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th>N.</th>
+                                        <th>Respuesta</th>
+                                        <th>Correcto</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach($pregunta['respuestas'] as $respuesta)
+                                        <tr>
+                                            <td>{{ $loop->index + 1 }}</td>
+                                            <td>{{ $respuesta['respuesta_descripcion'] }}</td>
+                                            <td>{{ $respuesta['correcto'] }}</td>
+                                            <td>
+                                                <button class="btn btn-primary btn-sm">
+                                                    <i class="fa fa-check"></i>
+                                                </button>
+                                                <button class="btn btn-primary btn-sm">
+                                                    <i class="fa fa-trash"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                @endif
+                <script>
+                    var select = document.getElementById('test_id');
+                    select.addEventListener('change', function () {
+                        this.form.submit();
+                    }, false);
+                </script>
+            </div>
+        </div>
+    </div>
+@endsection
+{{--@section('content')
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <div class="col-md-8 offset-md-2">
         <h2 class="text">Preguntas</h2>
         <div class="form-group">
@@ -21,7 +154,8 @@
                     <div class="col-8"><strong>Agregar</strong> Pregunta</div>
                 </div>
             </div>
-            <form action="{{ route('preguntas.store') }}" method="post" enctype="multipart/form-data"
+            <form id="preguntaForm"
+                  name="preguntaForm"
                   class="form-horizontal">
                 @csrf
                 <div class="card-body card-block">
@@ -47,14 +181,16 @@
 
                     <div class="form-group row mb-0">
                         <div class="col-md-12">
-                            <button type="submit" class="btn btn-primary btn-border-none btn-block">
+                            <button
+                                id="agregar_pregunta"
+                                class="btn btn-primary btn-border-none btn-block">
                                 <i class="fa fa-folder-plus"></i>
                             </button>
                         </div>
                     </div>
                 </div>
             </form>
-            {{--TABLA DE preguntas--}}
+            --}}{{--TABLA DE preguntas--}}{{--
             <div class="col-12">
                 <br>
                 <h4>Pregunas del <strong>Test</strong></h4>
@@ -98,7 +234,7 @@
                                         </a>
                                         <a class="btn btn-border-none btn-sm btn-outline-success "
                                            onclick="editar()"
-                                           {{--href="{{ url('preguntas/'.$pregunta->pregunta_id.'/edit') }}"--}}
+                                           --}}{{--href="{{ url('preguntas/'.$pregunta->pregunta_id.'/edit') }}"--}}{{--
                                            data-toggle="tooltip"
                                            data-placement="top" title="Editar">
                                             <span class="fa fa-pencil-alt"></span>
@@ -146,14 +282,6 @@
                 $("#c-preguntas").hide();
             });
         });
-    </script>
-    <script>
-        /*addEventListener('load', inicio, false);
-
-        function inicio() {
-            document.getElementById('c-preguntas').addEventListener('change', cambioM, false);
-        }*/
-
         function cambioM(id, name, test) {
             document.getElementById('test_id').value = id;
             document.getElementById('nameTest').innerHTML = name.charAt(0).toUpperCase() + name.slice(1);
@@ -163,5 +291,30 @@
             )
             document.console.log(test);
         }
+
     </script>
-@endsection
+    <script>
+        $(function () {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $("#agregar_pregunta").click(function (e) {
+                e.preventDefault();
+                $.ajax({
+                    data: $("#preguntaForm").serialize(),
+                    url: 'http://localhost:8000/api/preguntas',
+                    type: 'POST',
+                    dataType: 'json',
+                    success: function (data) {
+                        console.log(data);
+                    },
+                    error: function (error) {
+                        console.log(error);
+                    }
+                });
+            })
+        });
+    </script>
+@endsection--}}
