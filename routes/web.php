@@ -20,4 +20,5 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('/tests','TestController');
 Route::resource('/preguntas','PreguntaController');
+Route::get('/reporte/solicitud','ReporteController@solicitud');
 

@@ -95,11 +95,27 @@
                                     </span>
                                     @enderror
                                 </div>
+                                {{--foto ci--}}
+                                <div class="form-group col-md-4">
+                                    <label for="foto_carnet">{{ __('Escaneado de carnet') }}</label>
+                                    <div class="custom-file">
+                                        <input type="file" id="foto_carnet"
+                                               name="foto_carnet"
+                                               class="" accept="image\" lang="es" onchange="fileci($event)">
+
+                                    </div>
+                                    @error('foto_carnet')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
                                 {{--estado civil--}}
                                 <div class="form-group col-md-4">
                                     <label for="estado_civil">{{ __('Estado Civil') }}</label>
-                                    <select id="estado_civil" class="form-control @error('estado_civil') is-invalid @enderror"
-                                           name="estado_civil" required>
+                                    <select id="estado_civil"
+                                            class="form-control @error('estado_civil') is-invalid @enderror"
+                                            name="estado_civil" required>
                                         <option value="Soltero"> {{ __('Soltero') }}</option>
                                         <option value="Casado"> {{ __('Casado') }}</option>
                                         <option value="Divorciado"> {{ __('Divorciado') }}</option>
@@ -141,11 +157,10 @@
                                 {{--nacionalidad--}}
                                 <div class="form-group col-md-4">
                                     <label for="nacionalidad">{{ __('Nacionalidad') }}</label>
-                                    <input id="nacionalidad" type="text"
-                                           class="form-control @error('nacionalidad') is-invalid @enderror"
-                                           name="nacionalidad" value="{{ old('nacionalidad') }}" required
-                                           autocomplete="nacionalidad">
-
+                                    <select id="nacionalidad" class="form-control @error('nacionalidad') is-invalid @enderror" name="nacionalidad" required>
+                                        <option value="boliviano">Boliviano</option>
+                                        <option value="extranjero">Extranjero</option>
+                                    </select>
                                     @error('nacionalidad')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -198,13 +213,15 @@
                                     <label for="sexo">{{ __('Sexo') }}</label><br>
                                     <!-- Default unchecked -->
                                     <div class="custom-control custom-radio">
-                                        <input type="radio" class="custom-control-input" id="varon" name="sexo" value="Varon">
+                                        <input type="radio" class="custom-control-input" id="varon" name="sexo"
+                                               value="Varon">
                                         <label class="custom-control-label" for="varon">Varon</label>
                                     </div>
 
                                     <!-- Default checked -->
                                     <div class="custom-control custom-radio">
-                                        <input type="radio" class="custom-control-input" id="mujer" name="sexo" value="Mujer">
+                                        <input type="radio" class="custom-control-input" id="mujer" name="sexo"
+                                               value="Mujer">
                                         <label class="custom-control-label" for="mujer">Mujer</label>
                                     </div>
                                     @error('sexo')
@@ -219,10 +236,8 @@
                                     <div class="custom-file">
                                         <input type="file" id="credencializacion_fotografia"
                                                name="credencializacion_fotografia"
-                                               class="custom-file-input input-group-lg" accept="image\">
-                                        <label id="fotografia" class="custom-file-label"
-                                               for="credencializacion_fotografia" data-browse="Elegir">Seleccionar
-                                            Archivo</label>
+                                               accept="image\">
+
                                     </div>
                                     @error('credencializacion_fotografia')
                                     <span class="invalid-feedback" role="alert">
@@ -231,18 +246,32 @@
                                     @enderror
                                 </div>
                                 {{--Libreta militar--}}
-                                <div id="lm" class="form-group col-md-4">
-                                    <label for="numero_libreta_militar">{{ __('Libreta Militar') }}</label>
-                                    <input id="numero_libreta_militar" type="text"
-                                           class="form-control @error('numero_libreta_militar') is-invalid @enderror"
-                                           name="numero_libreta_militar" value="{{ old('numero_libreta_militar') }}"
-                                           autocomplete="numero_libreta_militar">
-                                    @error('numero_libreta_militar')
-                                    <span class="invalid-feedback" role="alert">
+                                <div  id="lm" class="form-group col-md-4">
+                                        <label for="numero_libreta_militar">{{ __('Libreta Militar') }}</label>
+                                        <input id="numero_libreta_militar" type="text"
+                                               class="form-control @error('numero_libreta_militar') is-invalid @enderror"
+                                               name="numero_libreta_militar" value="{{ old('numero_libreta_militar') }}"
+                                               autocomplete="numero_libreta_militar">
+                                        @error('numero_libreta_militar')
+                                        <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                                    @enderror
-                                </div>
+                                        @enderror
+                                    </div>
+                                {{--foto militar--}}
+                                <div id="fm" class="form-group col-md-4">
+                                        <label for="foto_militar">{{ __('Escaneado de Libreta militar') }}</label>
+                                        <div class="custom-file">
+                                            <input type="file" id="foto_militar"
+                                                   name="foto_militar"
+                                                   accept="image\" lang="es">
+                                        </div>
+                                        @error('foto_militar')
+                                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                        @enderror
+                                    </div>
                             </div>
                             <div class="row">
                                 <div class="col-12">
@@ -253,8 +282,9 @@
                                 {{--grado academico--}}
                                 <div class="form-group col-md-4">
                                     <label for="academico_grado">{{ __('Grado Academico') }}</label>
-                                    <select id="academico_grado" class="form-control @error('academico_grado') is-invalid @enderror"
-                                           name="academico_grado" required>
+                                    <select id="academico_grado"
+                                            class="form-control @error('academico_grado') is-invalid @enderror"
+                                            name="academico_grado" required>
                                         <option value="Bachillerato"> {{ __('Bachillerato') }}</option>
                                         <option value="Tecnico Medio"> {{ __('Tecnico Medio') }}</option>
                                         <option value="Tecnico Superior"> {{ __('Tecnico Superior') }}</option>
@@ -349,8 +379,16 @@
                                     </span>
                                     @enderror
                                 </div>
-
-                                <!--<div class="form-group col-md-4">
+                                <div class="form-group custom-control custom-switch text-center col-12">
+                                    <input type="checkbox" class="custom-control-input @error('disponibilidad') is-invalid @enderror" id="disponibilidad" name="disponibilidad">
+                                    <label class="custom-control-label" for="disponibilidad">¿Usted cuenta con disponibilidad total de tiempo para viajes al interior del departamento?</label>
+                                    @error('disponibilidad')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            <!--<div class="form-group col-md-4">
                                     <label for="password">{{ __('Password') }}</label>
                                     <input id="password" type="password"
                                            class="form-control @error('password') is-invalid @enderror" name="password"
@@ -384,23 +422,28 @@
 @endsection
 @section('scripts')
     <script>
-        addEventListener('load',inicio,false);
-        function inicio()
-        {
-            document.getElementById('mujer').addEventListener('change',cambio,false);
-            document.getElementById('varon').addEventListener('change',cambioV,false);
+        addEventListener('load', inicio, false);
+
+        function inicio() {
+            document.getElementById('mujer').addEventListener('change', cambio, false);
+            document.getElementById('varon').addEventListener('change', cambioV, false);
         }
-        function cambio(){
-           if(document.getElementById('mujer').checked){
-               document.getElementById('lm').style.display='none';
-               $('#numero_libreta_militar').removeAttr("required");
-           }
+
+        function cambio() {
+            if (document.getElementById('mujer').checked) {
+                document.getElementById('lm').style.display = 'none';
+                document.getElementById('fm').style.display = 'none';
+                $('#numero_libreta_militar').removeAttr("required");
+            }
         }
-        function cambioV(){
-            if(document.getElementById('varon').checked) {
+
+        function cambioV() {
+            if (document.getElementById('varon').checked) {
                 document.getElementById('lm').style.display = 'block';
+                document.getElementById('fm').style.display = 'block';
                 $('#numero_libreta_militar').prop("required", true);
             }
         }
     </script>
 @endsection
+

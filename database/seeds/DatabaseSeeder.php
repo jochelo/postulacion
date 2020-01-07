@@ -31,6 +31,7 @@ class DatabaseSeeder extends Seeder
             'apellido_materno' => 'Admin',
             'numero_carnet' => '0',
             'expedicion' => 'OR',
+            'foto_carnet' => '/',
             'estado_civil' => 'Soltero',
             'fecha_nacimiento' => '1990-05-16',
             'lugar' => 'Oruro',
@@ -47,13 +48,13 @@ class DatabaseSeeder extends Seeder
             'credencializacion_fotografia' => 'foto',
             'nivel_id' => $nivel->nivel_id,
             'cargo_id' => $cargo->cargo_id,
-            'es_admin' => true
+            'es_admin' => true,
+            'disponibilidad' => true
         ]);
         $cargos = [
             'Coordinador General',
             'Coordinador Provincia',
-            'Notario Operador Ciudad',
-            'Notario Operador Provincia',
+            'Notario Operador',
             'Auxiliar Administrativo Financiero',
             'Capacitador Control de Calidad',
             'Tecnico Logistica',
