@@ -3,7 +3,7 @@
     <div class="col-md-8 offset-md-2">
         <h2 class="text">Preguntas</h2>
         <div class="form-group">
-            <input class="form-control" id="s-preguntas" type="text" placeholder="Buscar..">
+            <input class="form-control" id="s-preguntas" type="text" placeholder="Buscar Test..">
             <div class="list-group" id="c-preguntas">
                 @foreach($tests as $test)
                     <button type="button" class="l-m list-group-item list-group-item-action" value="{{ $test}}"
@@ -146,32 +146,13 @@
                 $("#c-preguntas").hide();
             });
         });
-        //alambres
-        $(document).ready(function () {
-            $("#s-alambres").on("keyup", function () {
-                var value = $(this).val().toLowerCase();
-                $("#c-alambres .l-l").filter(function () {
-                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                });
-                $("#c-alambres").show();
-            });
-        });
-        $("#c-alambres").hide();
-        $(".datAlambre").hide();
-
-        $(document).ready(function () {
-            $("body").on("click", function () {
-                $("#c-alambres").hide();
-            });
-        });
     </script>
     <script>
-        addEventListener('load', inicio, false);
+        /*addEventListener('load', inicio, false);
 
         function inicio() {
-            document.getElementById('c-preguntas').addEventListener('change', cambio, false);
-            document.getElementById('c-alambres').addEventListener('change', cambio, false);
-        }
+            document.getElementById('c-preguntas').addEventListener('change', cambioM, false);
+        }*/
 
         function cambioM(id, name, test) {
             document.getElementById('test_id').value = id;
@@ -180,6 +161,7 @@
             @php(
             $t="<script>document.writeln(test);</script>"
             )
+            document.console.log(test);
         }
     </script>
 @endsection
