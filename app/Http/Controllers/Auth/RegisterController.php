@@ -77,7 +77,7 @@ class RegisterController extends Controller
     {
 
     }
-    protected function registrar(Request $request)
+    public function registrar(Request $request)
     {
         $usuario= $request->all();
         //dd($usuario);
@@ -85,16 +85,16 @@ class RegisterController extends Controller
         $nivel_bajo=Nivel::where('nivel_numero','=',0)->first();
 
         $img = $request->file('credencializacion_fotografia');
-        dd($img);
 
         $nomimg = time() . '_' . $img->getClientOriginalName();
- //       Storage::disk('s3')->put('postulacion/imgUsr/'.$nomimg, file_get_contents($img->getRealPath()),'public');
+        Storage::disk('s3')->put('postulacion/imgUsr/'.$nomimg, file_get_contents($img->getRealPath()),'public');
 
-//        $usuario['credencializacion_fotografia']=env('AWS_URL').'/postulacion/imgUsr/'.$nomimg;
-        $usuario['credencializacion_fotografia']='/postulacion/imgUsr/'.$nomimg;
+        $usuario['credencializacion_fotografia']=env('AWS_URL').'/postulacion/imgUsr/'.$nomimg;
         $usuario['nivel_id'] = $nivel_bajo['nivel_id'];
-        $usuario['password'] = Hash::make($usuario['password']);
+        $usuario['password'] = Hash::make($usuario['numero_carnet']);
+        if(!isset($usuario['numero_libreta_militar']))
+            unset($usuario['numero_libreta_militar']);
         User::create($usuario);
-        return view('auth.register');
+        return back();
     }
 }

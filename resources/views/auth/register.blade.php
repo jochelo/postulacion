@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.front')
 
 @section('content')
     <div class="container">
@@ -8,9 +8,15 @@
                     <div class="card-header">{{ __('INSCRIPCION') }}</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('registrar') }}">
+                        <form method="POST" action="{{ route('registrar') }}" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
+                                <div class="col-12">
+                                    <br>
+                                    <h4>Datos <strong>Personales</strong></h4>
+                                    <hr>
+                                </div>
+                                {{--cargo--}}
                                 <div class="form-group col-md-4">
                                     <label for="cargo_id">{{ __('Cargo a Postular') }}</label>
                                     <select name="cargo_id" id="cargo_id" class="form-control">
@@ -19,6 +25,7 @@
                                         @endforeach
                                     </select>
                                 </div>
+                                {{--nombres--}}
                                 <div class="form-group col-md-4">
                                     <label for="nombres">{{ __('Nombres') }}</label>
                                     <input id="nombres" type="text"
@@ -32,6 +39,7 @@
                                     </span>
                                     @enderror
                                 </div>
+                                {{--paterno--}}
                                 <div class="form-group col-md-4">
                                     <label for="apellido_paterno">{{ __('Apellido Paterno') }}</label>
                                     <input id="apellido_paterno" type="text"
@@ -45,6 +53,7 @@
                                     </span>
                                     @enderror
                                 </div>
+                                {{--materno--}}
                                 <div class="form-group col-md-4">
                                     <label for="apellido_materno">{{ __('Apellido Materno') }}</label>
                                     <input id="apellido_materno" type="text"
@@ -58,6 +67,7 @@
                                     </span>
                                     @enderror
                                 </div>
+                                {{--ci--}}
                                 <div class="form-group col-md-4">
                                     <label for="numero_carnet">{{ __('N. Carnet') }}</label>
                                     <input id="numero_carnet" type="text"
@@ -71,6 +81,7 @@
                                     </span>
                                     @enderror
                                 </div>
+                                {{--expedicion--}}
                                 <div class="form-group col-md-4">
                                     <label for="expedicion">{{ __('Expedicion') }}</label>
                                     <input id="expedicion" type="text"
@@ -84,19 +95,23 @@
                                     </span>
                                     @enderror
                                 </div>
+                                {{--estado civil--}}
                                 <div class="form-group col-md-4">
                                     <label for="estado_civil">{{ __('Estado Civil') }}</label>
-                                    <input id="estado_civil" type="text"
-                                           class="form-control @error('estado_civil') is-invalid @enderror"
-                                           name="estado_civil" value="{{ old('estado_civil') }}" required
-                                           autocomplete="estado_civil">
-
+                                    <select id="estado_civil" class="form-control @error('estado_civil') is-invalid @enderror"
+                                           name="estado_civil" required>
+                                        <option value="Soltero"> {{ __('Soltero') }}</option>
+                                        <option value="Casado"> {{ __('Casado') }}</option>
+                                        <option value="Divorciado"> {{ __('Divorciado') }}</option>
+                                        <option value="Viudo"> {{ __('Viudo') }}</option>
+                                    </select>
                                     @error('estado_civil')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                     @enderror
                                 </div>
+                                {{--fnacimiento--}}
                                 <div class="form-group col-md-4">
                                     <label for="fecha_nacimiento">{{ __('Fecha de Nacimiento') }}</label>
                                     <input id="fecha_nacimiento" type="date"
@@ -110,6 +125,7 @@
                                     </span>
                                     @enderror
                                 </div>
+                                {{--lugar--}}
                                 <div class="form-group col-md-4">
                                     <label for="lugar">{{ __('Lugar') }}</label>
                                     <input id="lugar" type="text"
@@ -122,6 +138,7 @@
                                     </span>
                                     @enderror
                                 </div>
+                                {{--nacionalidad--}}
                                 <div class="form-group col-md-4">
                                     <label for="nacionalidad">{{ __('Nacionalidad') }}</label>
                                     <input id="nacionalidad" type="text"
@@ -135,6 +152,7 @@
                                     </span>
                                     @enderror
                                 </div>
+                                {{--direccion--}}
                                 <div class="form-group col-md-4">
                                     <label for="direccion">{{ __('Direccion') }}</label>
                                     <input id="direccion" type="text"
@@ -148,6 +166,7 @@
                                     </span>
                                     @enderror
                                 </div>
+                                {{--cel--}}
                                 <div class="form-group col-md-4">
                                     <label for="telefono_celular">{{ __('Celular') }}</label>
                                     <input id="telefono_celular" type="text"
@@ -161,6 +180,7 @@
                                     </span>
                                     @enderror
                                 </div>
+                                {{--email--}}
                                 <div class="form-group col-md-4">
                                     <label for="email">{{ __('Correo Electronico') }}</label>
                                     <input id="email" type="text"
@@ -173,24 +193,77 @@
                                     </span>
                                     @enderror
                                 </div>
+                                {{--sexo--}}
                                 <div class="form-group col-md-4">
                                     <label for="sexo">{{ __('Sexo') }}</label><br>
-                                    <input id="sexo" type="checkbox" name="sexo" value="Varon"> Varon
-                                    <input id="sexo" type="checkbox" name="sexo" value="Mujer"> Mujer
+                                    <!-- Default unchecked -->
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" class="custom-control-input" id="varon" name="sexo" value="Varon">
+                                        <label class="custom-control-label" for="varon">Varon</label>
+                                    </div>
 
+                                    <!-- Default checked -->
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" class="custom-control-input" id="mujer" name="sexo" value="Mujer">
+                                        <label class="custom-control-label" for="mujer">Mujer</label>
+                                    </div>
                                     @error('sexo')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                     @enderror
                                 </div>
+                                {{--foto perfil--}}
+                                <div class="form-group col-md-4">
+                                    <label for="credencializacion_fotografia">{{ __('Foto de perfil') }}</label>
+                                    <div class="custom-file">
+                                        <input type="file" id="credencializacion_fotografia"
+                                               name="credencializacion_fotografia"
+                                               class="custom-file-input input-group-lg" accept="image\">
+                                        <label id="fotografia" class="custom-file-label"
+                                               for="credencializacion_fotografia" data-browse="Elegir">Seleccionar
+                                            Archivo</label>
+                                    </div>
+                                    @error('credencializacion_fotografia')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                                {{--Libreta militar--}}
+                                <div id="lm" class="form-group col-md-4">
+                                    <label for="numero_libreta_militar">{{ __('Libreta Militar') }}</label>
+                                    <input id="numero_libreta_militar" type="text"
+                                           class="form-control @error('numero_libreta_militar') is-invalid @enderror"
+                                           name="numero_libreta_militar" value="{{ old('numero_libreta_militar') }}"
+                                           autocomplete="numero_libreta_militar">
+                                    @error('numero_libreta_militar')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <br>
+                                    <h4>Formación <strong>Academica</strong></h4>
+                                    <hr>
+                                </div>
+                                {{--grado academico--}}
                                 <div class="form-group col-md-4">
                                     <label for="academico_grado">{{ __('Grado Academico') }}</label>
-                                    <input id="academico_grado" type="text"
-                                           class="form-control @error('academico_grado') is-invalid @enderror"
-                                           name="academico_grado" value="{{ old('academico_grado') }}" required
-                                           autocomplete="academico_grado">
-
+                                    <select id="academico_grado" class="form-control @error('academico_grado') is-invalid @enderror"
+                                           name="academico_grado" required>
+                                        <option value="Bachillerato"> {{ __('Bachillerato') }}</option>
+                                        <option value="Tecnico Medio"> {{ __('Tecnico Medio') }}</option>
+                                        <option value="Tecnico Superior"> {{ __('Tecnico Superior') }}</option>
+                                        <option value="Universitaria"> {{ __('Universitaria') }}</option>
+                                        <option value="Post grado"> {{ __('Post grado') }}</option>
+                                        <option value="Diplotado"> {{ __('Diplotado') }}</option>
+                                        <option value="Maestria"> {{ __('Maestria') }}</option>
+                                        <option value="Doctorado"> {{ __('Doctorado') }}</option>
+                                    </select>
                                     @error('academico_grado')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -236,21 +309,12 @@
                                     </span>
                                     @enderror
                                 </div>
-                                <div class="form-group col-md-4">
-                                    <label for="credencializacion_fotografia">{{ __('Credencialización') }}</label>
-                                    <div class="custom-file">
-                                        <input type="file" id="credencializacion_fotografia"
-                                               name="credencializacion_fotografia"
-                                               class="custom-file-input input-group-lg" accept="image\">
-                                        <label id="fotografia" class="custom-file-label"
-                                               for="credencializacion_fotografia" data-browse="Elegir">Seleccionar
-                                            Archivo</label>
-                                    </div>
-                                    @error('credencializacion_fotografia')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <br>
+                                    <h4>Campos <strong>Opcionales</strong></h4>
+                                    <hr>
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="telefono">{{ __('Telefono') }}</label>
@@ -285,20 +349,8 @@
                                     </span>
                                     @enderror
                                 </div>
-                                <div class="form-group col-md-4">
-                                    <label for="numero_libreta_militar">{{ __('Libreta Militar') }}</label>
-                                    <input id="numero_libreta_militar" type="text"
-                                           class="form-control @error('numero_libreta_militar') is-invalid @enderror"
-                                           name="numero_libreta_militar" value="{{ old('numero_libreta_militar') }}"
-                                           autocomplete="numero_libreta_militar">
-                                    @error('numero_libreta_militar')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
 
-                                <div class="form-group col-md-4">
+                                <!--<div class="form-group col-md-4">
                                     <label for="password">{{ __('Password') }}</label>
                                     <input id="password" type="password"
                                            class="form-control @error('password') is-invalid @enderror" name="password"
@@ -314,7 +366,7 @@
                                     <label for="password-confirm">{{ __('Confirmar Password') }}</label>
                                     <input id="password-confirm" type="password" class="form-control"
                                            name="password_confirmation" required autocomplete="new-password">
-                                </div>
+                                </div>-->
                             </div>
                             <div class="form-group col-md-4 row mb-0">
                                 <div class="col-md-6 offset-md-4">
@@ -329,4 +381,26 @@
             </div>
         </div>
     </div>
+@endsection
+@section('scripts')
+    <script>
+        addEventListener('load',inicio,false);
+        function inicio()
+        {
+            document.getElementById('mujer').addEventListener('change',cambio,false);
+            document.getElementById('varon').addEventListener('change',cambioV,false);
+        }
+        function cambio(){
+           if(document.getElementById('mujer').checked){
+               document.getElementById('lm').style.display='none';
+               $('#numero_libreta_militar').removeAttr("required");
+           }
+        }
+        function cambioV(){
+            if(document.getElementById('varon').checked) {
+                document.getElementById('lm').style.display = 'block';
+                $('#numero_libreta_militar').prop("required", true);
+            }
+        }
+    </script>
 @endsection

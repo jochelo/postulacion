@@ -12,10 +12,10 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
-
+Route::post('/registrar', 'Auth\RegisterController@registrar')->name('registrar');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::post('/registrar', 'RegisterController@registrar')->name('registrar');
+

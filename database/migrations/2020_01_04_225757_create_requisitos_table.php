@@ -14,7 +14,17 @@ class CreateRequisitosTable extends Migration
     public function up()
     {
         Schema::create('requisitos', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigIncrements('requisito_id');
+            $table->string('tipo_documento');
+            $table->boolean('activo');
+
+            $table->unsignedBigInteger('nivel_id')->unsigned();
+            $table->foreign('nivel_id')->on('niveles')->references('nivel_id')->onDelete('cascade');
+
+            $table->boolean('con_archivo_adjunto')->default(true);
+
+            $table->softDeletes();
+            $table->rememberToken();
             $table->timestamps();
         });
     }

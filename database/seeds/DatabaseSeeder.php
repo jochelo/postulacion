@@ -38,7 +38,7 @@ class DatabaseSeeder extends Seeder
             'direccion' => 'Direccion',
             'telefono_celular' => '0',
             'email' => 'admin@serecioruro.com',
-            'password' => 'Admin2020$$',
+            'password' => bcrypt('Admin2020$$'),
             'sexo' => 'varon',
             'academico_grado' => 'Licenciatura',
             'academico_gestion' => 2019,
