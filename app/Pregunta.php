@@ -15,4 +15,11 @@ class Pregunta extends Model
         'test_id'
     ];
     protected $dates=['deleted_at'];
+
+    public function test(){
+        return $this->belongsTo('App\Test');
+    }
+    public function respuestas(){
+        return $this->hasMany('App\Respuesta');
+    }
 }

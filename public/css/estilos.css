@@ -3,3 +3,45 @@
         display: none;
     }
 }
+.btn-elim{
+    position:relative;
+    float: right;
+}
+.btn-border-none{
+    border: none;
+    transition: .3s;
+}
+.btn-border-none:hover{
+    font-size:120%;
+    margin-top: -5px;
+    color: white;
+}
+.btn-plus{
+    top: 80px;
+    right: 55px;
+    position: fixed;
+    border-radius: 100%;
+    width: 50px;
+    height: 50px;
+    padding-top: 11px;
+    text-align: center;
+    font-size: 1.2em;
+    z-index: 100;
+    animation-delay: 1.5s;
+    animation-name: spin;
+    animation-duration: 3s;
+    transition-duration: 0.25s;
+}
+@media (max-width: 770px) {
+    .btn-plus {
+        top: inherit;
+        bottom:10px;
+        right: 10px;
+    }
+}
+.btn-plus:hover{
+    animation-duration: 900ms;
+    font-size:1.4em;
+    width: 55px;
+    height: 55px;
+}

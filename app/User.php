@@ -66,4 +66,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function cargo(){
+        return $this->belongsTo('App\Cargo');
+    }
+    public function nivel(){
+        return $this->belongsTo('App\Nivel');
+    }
 }

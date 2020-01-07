@@ -18,4 +18,6 @@ Route::post('/registrar', 'Auth\RegisterController@registrar')->name('registrar'
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::resource('/tests','TestController');
+Route::resource('/preguntas','PreguntaController');
 

@@ -16,4 +16,9 @@ class RespuestaUser extends Model
         'correcto',
     ];
     protected $dates=['deleted_at'];
+
+    public function testUser(){
+        return $this->belongsTo('App\TestUser');
+    }
 }
+

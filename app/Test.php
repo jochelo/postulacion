@@ -19,4 +19,14 @@ class Test extends Model
         'cargo_id',
     ];
     protected $dates=['deleted_at'];
+
+    public function cargo(){
+        return $this->belongsTo('App\Cargo');
+    }
+    public function nivel(){
+        return $this->belongsTo('App\Nivel');
+    }
+    public function preguntas(){
+        return $this->hasMany('App\Preguntas');
+    }
 }
