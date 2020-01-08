@@ -18,11 +18,10 @@
     
     Fpdf::SetFont('Arial', '', 16);
     Fpdf::cell(5, 8, "", 0, 0, 'C', false);
-    Fpdf::cell(100, 8, "Datos Personales                        Oruro, ".$dias[date('w')]." ".date('d')." de ".$meses[date('n')-1]." del ".date('Y'), 0, 1, 'L', false);
-//    Fpdf::cell(200, 15, "Oruro, ".$dias[date('w')]." ".date('d')." de ".$meses[date('n')-1]." del ".date('Y'), 0, 1, 'R', false);
-
-
+    Fpdf::cell(100, 8, "Datos Personales", 0, 0, 'L', false);
+        
     Fpdf::SetFont('Arial', '', 10);
+    Fpdf::cell(80, 8, "Oruro, ".$dias[date('w')]." ".date('d')." de ".$meses[date('n')-1]." del ".date('Y'), 0, 1, 'R', false);
 
     Fpdf::ln(3);
 
