@@ -130,7 +130,7 @@
     Fpdf::SetTextColor(0,0,0);
     Fpdf::SetMargins(15, 50, 0);
     Fpdf::SetLineWidth(0.1);
-    Fpdf::Line(90,235,140,235);
+    Fpdf::Line(90,219,140,219);
 
     Fpdf::ln(50);
     Fpdf::cell(0, 3, "POSTULANTE", 0, 1, 'C', false);
