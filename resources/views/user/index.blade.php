@@ -9,8 +9,8 @@
                         <h3>Lista de <strong>Postulantes</strong></h3>
                     </div>
                     <div class="card-body">
-                        <div class="table table-striped table-responsive-md">
-                            <table class="table">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
                                 <thead>
                                 <tr>
                                     <th scope="col">No</th>
@@ -21,6 +21,7 @@
                                     <th scope="col">Carnet</th>
                                     <th scope="col">Celular</th>
                                     <th scope="col">Grado Academico</th>
+                                    <th scope="col">Titulo Academico</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -36,7 +37,8 @@
                                         <td>{{$user->numero_carnet}}</td>
                                         <td>{{$user->telefono_celular}}</td>
                                         <td>{{$user->academico_grado}}</td>
-                                        <!--<td>
+                                        <td>{{$user->academico_titulo}}</td>
+                                    <!--<td>
                                             <div class="btn-group">
                                                 <a class="btn btn-border-none btn-sm btn-outline-success "
                                                    href="{{ url('users/'.$user->user_id.'/edit') }}"
@@ -48,14 +50,14 @@
                                                       action="{{ route('users.destroy',$user->user_id)}}" method="POST"
                                                       onclick="return confirm('Estas seguro de que desea eliminar?')">
                                                     {{ csrf_field() }}
-                                                    <input type="hidden" name="_method" value="DELETE">
-                                                    <button type="submit"
-                                                            class="btn btn-border-none btn-sm btn-outline-danger">
-                                                        <span class="fa fa-trash"></span>
-                                                    </button>
-                                                </form>
-                                            </div>
-                                        </td>-->
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <button type="submit"
+                                                class="btn btn-border-none btn-sm btn-outline-danger">
+                                            <span class="fa fa-trash"></span>
+                                        </button>
+                                    </form>
+                                </div>
+                            </td>-->
                                     </tr>
                                 @endforeach
                                 </tbody>

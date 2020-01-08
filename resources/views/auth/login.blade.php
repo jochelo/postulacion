@@ -147,6 +147,7 @@
                     <div class="card">
                         <div class="card-header text-center">
                             <h6><strong>CONVOCATORIA EMPADRONAMIENTO ELECCIONES GENERALES 2020</strong></h6>
+                            <h3 class="text-danger">TERMINOS DE REFERENCIA</h3>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -164,10 +165,10 @@
                                         <td><a href="tdrs/2TDR Coordinador Electoral.docx" target="_blank">2TDR Coordinador Electoral.docx</a></td>
                                     </tr>
                                     <tr>
-                                        <td><a href="tdrs/3 TDR NOTARIO OPERADOR.docx" target="_blank">3 TDR NOTARIO OPERADOR.docx</a></td>
+                                        <td><a href="tdrs/3 TDR NOTARIO OPERADOR.docx" target="_blank">3 TDR Notario Operador.docx</a></td>
                                     </tr>
                                     <tr>
-                                        <td><a href="tdrs/4 TDR AUXILIAR ADMINISTRATIVO FINANCIERO.docx" target="_blank">4 TDR AUXILIAR ADMINISTRATIVO FINANCIERO.docx</a></td>
+                                        <td><a href="tdrs/4 TDR AUXILIAR ADMINISTRATIVO FINANCIERO.docx" target="_blank">4 TDR Auxiliar Administrativo Financiero.docx</a></td>
                                     </tr>
                                     <tr>
                                         <td><a href="tdrs/5 TDR Capacitador y Control de Calidad.docx" target="_blank">5 TDR Capacitador y Control de Calidad.docx</a></td>
