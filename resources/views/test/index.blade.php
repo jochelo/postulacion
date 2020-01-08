@@ -1,7 +1,11 @@
 @extends('layouts.front')
 @section('content')
     <div class="container">
-        <a class="btn-plus btn btn-primary " href="{{ route("tests.create") }}"><i class="fa fa-plus"></i></a>
+        <div class="row">
+            <div class="col-lg-12">
+                <a class="btn-plus btn btn-primary " href="{{ route("tests.create") }}"><i class="fa fa-plus"></i></a>
+            </div>
+        </div>
         <div class="row">
             <div class="col-12">
                 <div class="card">

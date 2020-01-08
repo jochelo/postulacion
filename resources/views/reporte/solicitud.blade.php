@@ -137,6 +137,5 @@
     Fpdf::cell(0, 3, "POSTULANTE", 0, 1, 'C', false);
     Fpdf::SetTitle("Solicitud".date("Ymd H:i:s"));
     Fpdf::Output("I","Solicitud".date("Ymd H:i:s").".pdf");
-
     exit;
 @endphp

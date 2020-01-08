@@ -48,7 +48,7 @@
     <li class="nav-item">
         <a class="nav-link" href="{{route('register')}}">
             <i class="fas fa-fw fa-sign-in-alt"></i>
-            <span>Registro</span></a>
+            <span>Postulación</span></a>
     </li>
     @else
         @if(Auth::user()->es_admin)

@@ -16,6 +16,7 @@
                                     <th scope="col">No</th>
                                     <th scope="col">Cargo</th>
                                     <th scope="col">Postulante</th>
+                                    <th scope="col">Correo Electrónico</th>
                                     <th scope="col">Carnet</th>
                                     <th scope="col">Celular</th>
                                     <th scope="col">Grado Academico</th>
@@ -27,6 +28,7 @@
                                         <td>{{$loop->index+1}}</td>
                                         <td>{{$user->cargo_descripcion}}</td>
                                         <td>{{$user->nombres.' '.$user->apellido_paterno.' '.$user->apellido_materno}}</td>
+                                        <td>{{$user->email}}</td>
                                         <td>{{$user->numero_carnet}}</td>
                                         <td>{{$user->telefono_celular}}</td>
                                         <td>{{$user->academico_grado}}</td>
