@@ -84,7 +84,7 @@ class RegisterController extends Controller
             'apellido_materno' => ['required', 'string', 'max:191'],
             'numero_carnet' => ['required', 'numeric', 'max:10000000000'],
             'expedicion' => ['required', 'string', 'max:25'],
-            'foto_carnet' => ['required', 'image'],
+            'foto_carnet' => ['required'],
             'lugar' => ['required', 'string', 'max:191'],
             'direccion' => ['required', 'string', 'max:191'],
             'telefono_celular' => ['required', 'numeric', 'max:1000000000000'],

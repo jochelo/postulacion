@@ -28,7 +28,7 @@
     Fpdf::cell(5, 8, "", 0, 0, 'C', false);
     Fpdf::cell(35, 8, "Postulante: ", 0, 0, 'L', false);
     Fpdf::SetFillColor(225,221,124);
-    Fpdf::cell(145, 8, $user->nombres.' '.$user->apellido_paterno.' '.$user->apellido_materno, 0, 1, 'C', true);
+    Fpdf::cell(145, 8, utf8_decode($user->nombres.' '.$user->apellido_paterno.' '.$user->apellido_materno), 0, 1, 'C', true);
 
     Fpdf::ln(2);
     Fpdf::cell(5, 8, "", 0, 0, 'C', false);
@@ -53,7 +53,7 @@
     Fpdf::cell(5, 8, "", 0, 0, 'C', false);
     Fpdf::cell(35, 8, "Lugar: ", 0, 0, 'L', false);
     Fpdf::SetFillColor(225,221,124);
-    Fpdf::cell(40, 8, $user->lugar, 0, 0, 'C', true);
+    Fpdf::cell(40, 8, utf8_decode($user->lugar), 0, 0, 'C', true);
     Fpdf::cell(65, 8, "Nacionalidad: ", 0, 0, 'C', false);
     Fpdf::SetFillColor(225,221,124);
     Fpdf::cell(40, 8, $user->nacionalidad, 0, 1, 'C', true);
@@ -62,7 +62,7 @@
     Fpdf::cell(5, 8, "", 0, 0, 'C', false);
     Fpdf::cell(35, 8, "Direccion: ", 0, 0, 'L', false);
     Fpdf::SetFillColor(225,221,124);
-    Fpdf::cell(145, 8, $user->direccion, 0, 1, 'C', true);
+    Fpdf::cell(145, 8, utf8_decode($user->direccion), 0, 1, 'C', true);
 
     Fpdf::ln(2);
     Fpdf::cell(5, 8, "", 0, 0, 'C', false);
@@ -89,7 +89,7 @@
     Fpdf::cell(40, 8, $user->casilla_postal, 0, 0, 'C', true);
     Fpdf::cell(40, 8, "No. Libreta S. Militar: ", 0, 0, 'C', false);
     Fpdf::SetFillColor(225,221,124);
-    Fpdf::cell(65, 8, $user->numero_libreta_militar, 0, 1, 'C', true);
+    Fpdf::cell(65, 8, utf8_decode($user->numero_libreta_militar), 0, 1, 'C', true);
 
     Fpdf::ln(3);
     Fpdf::SetFont('Arial', '', 16);
@@ -105,19 +105,19 @@
     Fpdf::cell(40, 8, $user->academico_gestion, 0, 0, 'C', true);
     Fpdf::cell(40, 8, "Grado Academico: ", 0, 0, 'C', false);
     Fpdf::SetFillColor(225,221,124);
-    Fpdf::cell(65, 8, $user->academico_grado, 0, 1, 'C', true);
+    Fpdf::cell(65, 8, utf8_decode($user->academico_grado), 0, 1, 'C', true);
 
     Fpdf::ln(2);
     Fpdf::cell(5, 8, "", 0, 0, 'C', false);
     Fpdf::cell(35, 8, "Titulo Academico: ", 0, 0, 'L', false);
     Fpdf::SetFillColor(225,221,124);
     Fpdf::SetFont('Arial', '', 6);
-    Fpdf::cell(40, 8, $user->academico_titulo, 0, 0, 'C', true);
+    Fpdf::cell(40, 8, utf8_decode($user->academico_titulo), 0, 0, 'C', true);
     Fpdf::SetFont('Arial', '', 10);
     Fpdf::cell(40, 8, "Inst. Academica: ", 0, 0, 'C', false);
     Fpdf::SetFillColor(225,221,124);
     Fpdf::SetFont('Arial', '', 6);
-    Fpdf::cell(65, 8, $user->academico_institucion, 0, 1, 'C', true);
+    Fpdf::cell(65, 8, utf8_decode($user->academico_institucion), 0, 1, 'C', true);
 
     Fpdf::SetFont('Arial', 'I', 12);
 
@@ -133,7 +133,7 @@
     Fpdf::Line(90,219,140,219);
 
     Fpdf::ln(50);
-    Fpdf::cell(0, 3,$user->nombres.' '.$user->apellido_paterno.' '.$user->apellido_materno, 0, 1, 'C', false);
+    Fpdf::cell(0, 3, utf8_decode($user->nombres.' '.$user->apellido_paterno.' '.$user->apellido_materno), 0, 1, 'C', false);
     Fpdf::cell(0, 3, "POSTULANTE", 0, 1, 'C', false);
     Fpdf::SetTitle("Solicitud".date("Ymd H:i:s"));
     Fpdf::Output("I","Solicitud".date("Ymd H:i:s").".pdf");
