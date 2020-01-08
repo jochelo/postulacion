@@ -12,7 +12,7 @@
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">Postulaciones OEP</div>
+        <div class="sidebar-brand-text mx-3">Postulaciones <small>SERECI - ORURO</small> </div>
     </a>
 
     <!-- Divider -->
@@ -20,10 +20,10 @@
 
     <!-- Nav Item - Dashboard -->
     @auth
-        <li class="nav-item active">
+{{--        <li class="nav-item active">
             <a class="nav-link" href="{{ url('/home') }}">
                 <span>Dashboard</span></a>
-        </li>
+        </li>--}}
     @else
         <li class="nav-item active">
             <a class="nav-link" href="{{ url('/') }}">
@@ -51,6 +51,7 @@
             <span>Registro</span></a>
     </li>
     @else
+        @if(Auth::user()->es_admin)
         <li class="nav-item">
             <a class="nav-link" href="{{url('/tests')}}">
                 <i class="fas fa-fw fa-file"></i>
@@ -65,9 +66,9 @@
                     <span>Preguntas</span></button>
             </form>
         </li>
+        @endif
     @endguest
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
     <!-- Sidebar Toggler (Sidebar) -->
-
 </ul>
