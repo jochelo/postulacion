@@ -6,7 +6,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3>{{ __('POSTULACIÓN') }}</h3>
+                        <h3>{{ __('POSTULACI脫N') }}</h3>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('registrar') }}" enctype="multipart/form-data">
@@ -90,7 +90,7 @@
                                     <label for="expedicion">{{ __('Expedicion') }}</label>
                                     <input id="expedicion" type="text"
                                            class="form-control @error('expedicion') is-invalid @enderror"
-                                          oninput="value = value.toUpperCase()"
+                                           oninput="value = value.toUpperCase()"
                                            name="expedicion" value="{{ old('expedicion') }}" required
                                            autocomplete="expedicion">
 
@@ -240,11 +240,12 @@
                                 </div>
                                 {{--foto perfil--}}
                                 <div class="form-group col-md-4">
-                                    <label for="credencializacion_fotografia">{{ __('Foto de perfil') }}</label>
+                                    <label for="credencializacion_fotografia">{{ __('Foto de perfil') }}</label><br>
+
                                     <div class="custom-file">
                                         <input type="file" id="credencializacion_fotografia"
                                                name="credencializacion_fotografia"
-                                               accept="image/x-png,image/jpeg">
+                                               accept="image\">
                                         <strong class="text-danger">Solo imagenes .jpg y .png son permitidas</strong>
                                     </div>
                                     @error('credencializacion_fotografia')
@@ -255,39 +256,37 @@
                                 </div>
                                 {{--Libreta militar--}}
                                 <div  id="lm" class="form-group col-md-4">
-                                        <label for="numero_libreta_militar">{{ __('Libreta Militar') }}</label>
-                                        <input id="numero_libreta_militar" type="text"
-                                               class="form-control @error('numero_libreta_militar') is-invalid @enderror"
-                                               name="numero_libreta_militar" value="{{ old('numero_libreta_militar') }}"
-                                               autocomplete="numero_libreta_militar">
-                                        @error('numero_libreta_militar')
-                                        <span class="invalid-feedback" role="alert">
+                                    <label for="numero_libreta_militar">{{ __('Libreta Militar') }}</label>
+                                    <input id="numero_libreta_militar" type="text"
+                                           class="form-control @error('numero_libreta_militar') is-invalid @enderror"
+                                           name="numero_libreta_militar" value="{{ old('numero_libreta_militar') }}"
+                                           autocomplete="numero_libreta_militar">
+                                    @error('numero_libreta_militar')
+                                    <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                                        @enderror
-                                    </div>
+                                    @enderror
+                                </div>
                                 {{--foto militar--}}
                                 <div id="fm" class="form-group col-md-4">
-                                        <label for="foto_militar">{{ __('Escaneado de Libreta militar') }}</label>
-                                        <div class="custom-file">
-                                            <input type="file" id="foto_militar"
-                                                   name="foto_militar"
-                                                   accept="image\" lang="es">
-                                        </div>
-                                        @error('foto_militar')
-                                        <span class="invalid-feedback" role="alert">
+                                    <label for="foto_militar">{{ __('Escaneado de Libreta militar') }}</label>
+                                    <div class="custom-file">
+                                        <input type="file" id="foto_militar"
+                                               name="foto_militar"
+                                               accept="image\" lang="es">
+                                    </div>
+                                    @error('foto_militar')
+                                    <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                                        @enderror
-                                    </div>
+                                    @enderror
+                                </div>
                             </div>
                             <div class="row">
                                 <div class="col-12">
                                     <br>
-                                    <h4>Formación <strong>Academica</strong></h4>
-                                    <div class="text-danger">
-                                        El grado academico ingresado debe corresponder al solicitado en los <strong>Terminos de Referencia</strong> del cargo al que postula.
-                                    </div>
+                                    <h4>Formaci贸n <strong>Academica</strong></h4>
+                                    <div class="text-danger">El grado academico ingresado debe corresponder al solicitado en los <strong>Terminos de Referencia</strong> del cargo al que postula</div>
                                     <hr>
                                 </div>
                                 {{--grado academico--}}
@@ -312,7 +311,7 @@
                                     @enderror
                                 </div>
                                 <div class="form-group col-md-4">
-                                    <label for="academico_gestion">{{ __('Gestión Academica') }}</label>
+                                    <label for="academico_gestion">{{ __('Gesti贸n Academica') }}</label>
                                     <input id="academico_gestion" type="text"
                                            class="form-control @error('academico_gestion') is-invalid @enderror"
                                            name="academico_gestion" value="{{ old('academico_gestion') }}" required
@@ -394,7 +393,7 @@
                                 </div>
                                 <div class="form-group custom-control custom-switch text-center col-12">
                                     <input type="checkbox" class="custom-control-input @error('disponibilidad') is-invalid @enderror" id="disponibilidad" name="disponibilidad">
-                                    <label class="custom-control-label" for="disponibilidad">¿Usted cuenta con disponibilidad total de tiempo para viajes al interior del departamento?</label>
+                                    <label class="custom-control-label" for="disponibilidad">驴Usted cuenta con disponibilidad total de tiempo para viajes al interior del departamento?</label>
                                     @error('disponibilidad')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -408,8 +407,8 @@
                                            required autocomplete="new-password">
 
                                     @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
                                     </span>
                                     @enderror
                                 </div>

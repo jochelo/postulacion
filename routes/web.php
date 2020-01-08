@@ -12,15 +12,16 @@
 */
 
 Route::get('/', function () {
-    return view('auth.login');
+    return redirect('/login');
 });
 Route::post('/registrar', 'Auth\RegisterController@registrar')->name('registrar');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::resource('/users','UserController');
-Route::resource('/tests','TestController');
-Route::resource('/preguntas','PreguntaController');
-Route::get('preguntas-test', 'TestController@preguntasTestGet');
-Route::post('preguntas-test','TestController@preguntasTest');
+Route::resource('/users','UserController')->middleware('admin');
+Route::resource('/tests','TestController')->middleware('admin');
+Route::resource('/preguntas','PreguntaController')->middleware('admin');
+Route::get('preguntas-test', 'TestController@preguntasTestGet')->middleware('admin');
+Route::post('preguntas-test','TestController@preguntasTest')->middleware('admin');
 Route::get('reporte/solicitud','ReporteController@solicitud');
+

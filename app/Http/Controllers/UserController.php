@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 use App\User;
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +19,7 @@ class UserController extends Controller
     public function index()
     {
         $users=User::where('es_admin','=',false)->
-            orderBy('nombres','asc')->get();
+        orderBy('nombres','asc')->get();
         // dd($users);
         return view('user.index',compact('users'));
     }
