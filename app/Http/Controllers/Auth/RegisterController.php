@@ -115,7 +115,7 @@ class RegisterController extends Controller
         if(isset($request->foto_militar)) {
             $imgM = $request->file('foto_militar');
             $nomMil = time() . '_' . $imgM->getClientOriginalName();
-            Storage::disk('s3')->put('postulacion/libretaMilUsr/' . $nomMil, file_get_contents($imgM->getRealPath()),);
+            Storage::disk('s3')->put('postulacion/libretaMilUsr/' . $nomMil, file_get_contents($imgM->getRealPath()));
             $usuario['foto_militar']=env('AWS_URL').'postulacion/libretaMilUsr/'.$nomimg;
         }
         $usuario['foto_carnet']=env('AWS_URL').'postulacion/carnetUsr/'.$nomimg;

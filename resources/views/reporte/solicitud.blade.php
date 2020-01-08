@@ -15,11 +15,11 @@
     $meses=["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
 
     Fpdf::SetFont('Arial', '', 10);
-    
+
     Fpdf::SetFont('Arial', '', 16);
     Fpdf::cell(5, 8, "", 0, 0, 'C', false);
     Fpdf::cell(100, 8, "Datos Personales", 0, 0, 'L', false);
-        
+
     Fpdf::SetFont('Arial', '', 10);
     Fpdf::cell(80, 8, "Oruro, ".$dias[date('w')]." ".date('d')." de ".$meses[date('n')-1]." del ".date('Y'), 0, 1, 'R', false);
 
@@ -133,8 +133,8 @@
     Fpdf::Line(90,219,140,219);
 
     Fpdf::ln(50);
-    Fpdf::cell(0, 3, "POSTULANTE", 0, 1, 'C', false);
     Fpdf::cell(0, 3,$user->nombres.' '.$user->apellido_paterno.' '.$user->apellido_materno, 0, 1, 'C', false);
+    Fpdf::cell(0, 3, "POSTULANTE", 0, 1, 'C', false);
     Fpdf::SetTitle("Solicitud".date("Ymd H:i:s"));
     Fpdf::Output("I","Solicitud".date("Ymd H:i:s").".pdf");
 
