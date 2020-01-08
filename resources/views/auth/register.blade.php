@@ -8,7 +8,6 @@
                     <div class="card-header">
                         <h3>{{ __('POSTULACIÓN') }}</h3>
                     </div>
-
                     <div class="card-body">
                         <form method="POST" action="{{ route('registrar') }}" enctype="multipart/form-data">
                             @csrf
