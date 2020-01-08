@@ -66,6 +66,11 @@
                     <span>Preguntas</span></button>
             </form>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{url('/users')}}">
+                <i class="fas fa-fw fa-users"></i>
+                <span>Postulantes</span></a>
+        </li>
         @endif
     @endguest
     <!-- Divider -->

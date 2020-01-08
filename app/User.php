@@ -69,10 +69,20 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    public function cargo(){
+    protected $appends = ['cargo_descripcion', 'nivel_descripcion'];
+
+
+    public function getCargoDescripcionAttribute(){
+        return Cargo::find($this->cargo_id)->cargo_descripcion;
+    }
+    public function getNivelDecripcionAttribute(){
+        return Nivel::find($this->nivel_id)->nivel_descripcion;
+    }
+
+    /*public function cargo(){
         return $this->belongsTo('App\Cargo');
     }
     public function nivel(){
         return $this->belongsTo('App\Nivel');
-    }
+    }*/
 }
