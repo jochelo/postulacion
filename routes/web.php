@@ -22,4 +22,4 @@ Route::resource('/tests','TestController');
 Route::resource('/preguntas','PreguntaController');
 Route::get('preguntas-test', 'TestController@preguntasTestGet');
 Route::post('preguntas-test','TestController@preguntasTest');
-
+Route::get('/reporte/solicitud','ReporteController@solicitud');

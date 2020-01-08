@@ -19,7 +19,7 @@
     <!-- Custom styles for this template-->
     <link href="/index/css/sb-admin-2.css" rel="stylesheet">
     <link href="/css/estilos.css" rel="stylesheet">
-
+    @yield('styles')
 </head>
 
 <body id="page-top">
@@ -290,9 +290,10 @@
     });
 </script>
 @yield('scripts')
-<script src="index/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/index/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- Core plugin JavaScript-->
-<script src="index/vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="/index/vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="/js/bs-custom-file-input.js"></script>
 
 <!-- Custom scripts for all pages-->
 <!--<script src="index/js/sb-admin-2.min.js"></script>-->

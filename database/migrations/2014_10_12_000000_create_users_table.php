@@ -20,6 +20,8 @@ class CreateUsersTable extends Migration
             $table->string('apellido_materno');
             $table->string('numero_carnet');
             $table->string('expedicion');
+            $table->string('foto_carnet');
+
             $table->string('estado_civil');
             $table->date('fecha_nacimiento');
             $table->string('lugar');
@@ -40,9 +42,12 @@ class CreateUsersTable extends Migration
             $table->string('casilla_postal')->nullable();
 
             $table->string('numero_libreta_militar')->default('_');
+            $table->string('foto_militar')->nullable();
+
             $table->boolean('aprobado')->default(false);
             $table->boolean('nivel_completo')->default(false);
             $table->boolean('es_admin')->default(false);
+            $table->boolean('disponibilidad');
 
             $table->unsignedBigInteger('nivel_id');
             $table->unsignedBigInteger('cargo_id');
