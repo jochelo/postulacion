@@ -285,6 +285,9 @@
                                 <div class="col-12">
                                     <br>
                                     <h4>Formación <strong>Academica</strong></h4>
+                                    <div class="text-danger">
+                                        El grado academico ingresado debe corresponder al solicitado en los <strong>Terminos de Referencia</strong> del cargo al que postula.
+                                    </div>
                                     <hr>
                                 </div>
                                 {{--grado academico--}}
@@ -298,7 +301,7 @@
                                         <option value="Tecnico Superior"> {{ __('Tecnico Superior') }}</option>
                                         <option value="Universitaria"> {{ __('Universitaria') }}</option>
                                         <option value="Post grado"> {{ __('Post grado') }}</option>
-                                        <option value="Diplotado"> {{ __('Diplotado') }}</option>
+                                        <option value="Diplomado"> {{ __('Diplomado') }}</option>
                                         <option value="Maestria"> {{ __('Maestria') }}</option>
                                         <option value="Doctorado"> {{ __('Doctorado') }}</option>
                                     </select>

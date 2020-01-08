@@ -66,6 +66,14 @@
                 </div>
             </div>
             <br>
+            <div class="card">
+                <div class="card-header">
+                    NOTICIAS
+                </div>
+                <div class="card-body">
+                    <img src="noticias/noticia1.jpeg" class="img-fluid">
+                </div>
+            </div>
         </div>
         <div class="col-md-6">
             <div class="row">

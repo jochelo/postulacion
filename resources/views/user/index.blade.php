@@ -14,6 +14,7 @@
                                 <thead>
                                 <tr>
                                     <th scope="col">No</th>
+                                    <th scope="col">Foto</th>
                                     <th scope="col">Cargo</th>
                                     <th scope="col">Postulante</th>
                                     <th scope="col">Correo Electrónico</th>
@@ -26,6 +27,9 @@
                                 @foreach($users as $user)
                                     <tr>
                                         <td>{{$loop->index+1}}</td>
+                                        <td>
+                                            <img src="{{$user->credencializacion_fotografia}}" height="125">
+                                        </td>
                                         <td>{{$user->cargo_descripcion}}</td>
                                         <td>{{$user->nombres.' '.$user->apellido_paterno.' '.$user->apellido_materno}}</td>
                                         <td>{{$user->email}}</td>
