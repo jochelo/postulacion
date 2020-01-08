@@ -103,6 +103,9 @@
                     <div class="card">
                         <div class="card-header text-center">
                             <h6><strong>REGLAMENTO PARA LA ACTUALIZACION DEL PADRON ELECTORAL BIOMETRICOS</strong></h6>
+                            <h6 class="text-danger">
+                               DOCUMENTO BASE PARA LA EVALUACION EN LINEA
+                            </h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">

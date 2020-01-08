@@ -244,8 +244,8 @@
                                     <div class="custom-file">
                                         <input type="file" id="credencializacion_fotografia"
                                                name="credencializacion_fotografia"
-                                               accept="image\">
-
+                                               accept="image/x-png,image/jpg">
+                                        <strong>Solo imagenes .jpg y .png son permitidas</strong>
                                     </div>
                                     @error('credencializacion_fotografia')
                                     <span class="invalid-feedback" role="alert">
