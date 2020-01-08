@@ -22,10 +22,6 @@
 
     <!-- Custom styles for this template-->
 
-    
-    <link href="/index/css/sb-admin-2.css" rel="stylesheet">
-    <link href="/css/estilos.css" rel="stylesheet">
-
     <link rel="stylesheet" href="{{ asset('index/css/sb-admin-2.css') }}">
     <link rel="stylesheet" href="{{ asset('css/estilos.css') }}">
 
