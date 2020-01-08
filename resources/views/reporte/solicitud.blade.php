@@ -14,12 +14,13 @@
     $dias=["Domingo","Lunes","Martes","Miercoles","Jueves","Viernes","Sabado"];
     $meses=["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
 
-    Fpdf::SetFont('Arial', '', 8);
-    Fpdf::cell(0, 15, "Oruro: ".$dias[date('w')]." ".date('d')." de ".$meses[date('n')-1]." del ".date('Y'), 0, 1, 'L', false);
-
+    Fpdf::SetFont('Arial', '', 10);
+    
     Fpdf::SetFont('Arial', '', 16);
     Fpdf::cell(5, 8, "", 0, 0, 'C', false);
-    Fpdf::cell(100, 8, "Datos Personales", 0, 1, 'L', false);
+    Fpdf::cell(100, 8, "Datos Personales                        Oruro, ".$dias[date('w')]." ".date('d')." de ".$meses[date('n')-1]." del ".date('Y'), 0, 1, 'L', false);
+//    Fpdf::cell(200, 15, "Oruro, ".$dias[date('w')]." ".date('d')." de ".$meses[date('n')-1]." del ".date('Y'), 0, 1, 'R', false);
+
 
     Fpdf::SetFont('Arial', '', 10);
 
@@ -32,12 +33,13 @@
 
     Fpdf::ln(2);
     Fpdf::cell(5, 8, "", 0, 0, 'C', false);
-    Fpdf::cell(35, 8, "Carnet Indentidad: ", 0, 0, 'L', false);
+    Fpdf::cell(35, 8, "Carnet Identidad: ", 0, 0, 'L', false);
     Fpdf::SetFillColor(225,221,124);
     Fpdf::cell(40, 8, $user->numero_carnet, 0, 0, 'C', true);
     Fpdf::cell(65, 8, "Fecha de Nacimiento: ", 0, 0, 'C', false);
     Fpdf::SetFillColor(225,221,124);
-    Fpdf::cell(40, 8, $user->fecha_nacimiento, 0, 1, 'C', true);
+    $fecha = explode('-', $user->fecha_nacimiento)[2] . '/' . explode('-', $user->fecha_nacimiento)[1] . '/'. explode('-', $user->fecha_nacimiento)[0];
+    Fpdf::cell(40, 8, $fecha, 0, 1, 'C', true);
 
     Fpdf::ln(2);
     Fpdf::cell(5, 8, "", 0, 0, 'C', false);
@@ -83,10 +85,10 @@
 
     Fpdf::ln(2);
     Fpdf::cell(5, 8, "", 0, 0, 'C', false);
-    Fpdf::cell(35, 8, "Casilla postal: ", 0, 0, 'L', false);
+    Fpdf::cell(35, 8, "Casilla Postal: ", 0, 0, 'L', false);
     Fpdf::SetFillColor(225,221,124);
     Fpdf::cell(40, 8, $user->casilla_postal, 0, 0, 'C', true);
-    Fpdf::cell(40, 8, "No. Libreta Militar: ", 0, 0, 'C', false);
+    Fpdf::cell(40, 8, "No. Libreta S. Militar: ", 0, 0, 'C', false);
     Fpdf::SetFillColor(225,221,124);
     Fpdf::cell(65, 8, $user->numero_libreta_militar, 0, 1, 'C', true);
 
@@ -99,21 +101,24 @@
 
     Fpdf::ln(2);
     Fpdf::cell(5, 8, "", 0, 0, 'C', false);
-    Fpdf::cell(35, 8, "Grado Academico: ", 0, 0, 'L', false);
+    Fpdf::cell(35, 8, "Gestion Academica: ", 0, 0, 'L', false);
     Fpdf::SetFillColor(225,221,124);
-    Fpdf::cell(40, 8, $user->academico_grado, 0, 0, 'C', true);
-    Fpdf::cell(40, 8, "Gestion Academica: ", 0, 0, 'C', false);
+    Fpdf::cell(40, 8, $user->academico_gestion, 0, 0, 'C', true);
+    Fpdf::cell(40, 8, "Grado Academico: ", 0, 0, 'C', false);
     Fpdf::SetFillColor(225,221,124);
-    Fpdf::cell(65, 8, $user->academico_gestion, 0, 1, 'C', true);
+    Fpdf::cell(65, 8, $user->academico_grado, 0, 1, 'C', true);
 
     Fpdf::ln(2);
     Fpdf::cell(5, 8, "", 0, 0, 'C', false);
-    Fpdf::cell(35, 8, "Inst. Academica: ", 0, 0, 'L', false);
+    Fpdf::cell(35, 8, "Titulo Academico: ", 0, 0, 'L', false);
     Fpdf::SetFillColor(225,221,124);
-    Fpdf::cell(40, 8, $user->academico_institucion, 0, 0, 'C', true);
-    Fpdf::cell(40, 8, "Titulo Academico: ", 0, 0, 'C', false);
+    Fpdf::SetFont('Arial', '', 6);
+    Fpdf::cell(40, 8, $user->academico_titulo, 0, 0, 'C', true);
+    Fpdf::SetFont('Arial', '', 10);
+    Fpdf::cell(40, 8, "Inst. Academica: ", 0, 0, 'C', false);
     Fpdf::SetFillColor(225,221,124);
-    Fpdf::cell(65, 8, $user->academico_titulo, 0, 1, 'C', true);
+    Fpdf::SetFont('Arial', '', 6);
+    Fpdf::cell(65, 8, $user->academico_institucion, 0, 1, 'C', true);
 
     Fpdf::SetFont('Arial', 'I', 12);
 
@@ -126,8 +131,9 @@
     Fpdf::SetTextColor(0,0,0);
     Fpdf::SetMargins(15, 50, 0);
     Fpdf::SetLineWidth(0.1);
-    Fpdf::Line(90,210,150,210);
-    Fpdf::ln(25);
+    Fpdf::Line(90,235,140,235);
+
+    Fpdf::ln(50);
     Fpdf::cell(0, 3, "POSTULANTE", 0, 1, 'C', false);
     Fpdf::cell(0, 3,$user->nombres.' '.$user->apellido_paterno.' '.$user->apellido_materno, 0, 1, 'C', false);
     Fpdf::SetTitle("Solicitud".date("Ymd H:i:s"));

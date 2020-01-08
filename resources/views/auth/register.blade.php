@@ -30,6 +30,7 @@
                                     <label for="nombres">{{ __('Nombres') }}</label>
                                     <input id="nombres" type="text"
                                            class="form-control @error('nombres') is-invalid @enderror"
+                                           oninput="value = value.toUpperCase()" 
                                            name="nombres" value="{{ old('nombres') }}" required autocomplete="nombres"
                                            autofocus>
 
@@ -45,6 +46,7 @@
                                     <input id="apellido_paterno" type="text"
                                            class="form-control @error('apellido_paterno') is-invalid @enderror"
                                            name="apellido_paterno" value="{{ old('apellido_paterno') }}" required
+                                           oninput="value = value.toUpperCase()" 
                                            autocomplete="apellido_paterno">
 
                                     @error('apellido_paterno')
@@ -59,6 +61,7 @@
                                     <input id="apellido_materno" type="text"
                                            class="form-control @error('apellido_materno') is-invalid @enderror"
                                            name="apellido_materno" value="{{ old('apellido_materno') }}" required
+                                           oninput="value = value.toUpperCase()" 
                                            autocomplete="apellido_materno">
 
                                     @error('apellido_materno')
@@ -86,6 +89,7 @@
                                     <label for="expedicion">{{ __('Expedicion') }}</label>
                                     <input id="expedicion" type="text"
                                            class="form-control @error('expedicion') is-invalid @enderror"
+                                          oninput="value = value.toUpperCase()" 
                                            name="expedicion" value="{{ old('expedicion') }}" required
                                            autocomplete="expedicion">
 
@@ -146,7 +150,9 @@
                                     <label for="lugar">{{ __('Lugar') }}</label>
                                     <input id="lugar" type="text"
                                            class="form-control @error('lugar') is-invalid @enderror"
-                                           name="lugar" value="{{ old('lugar') }}" required autocomplete="lugar">
+                                           name="lugar" value="{{ old('lugar') }}" required 
+                                           oninput="value = value.toUpperCase()" 
+                                           autocomplete="lugar">
 
                                     @error('lugar')
                                     <span class="invalid-feedback" role="alert">
@@ -172,7 +178,8 @@
                                     <label for="direccion">{{ __('Direccion') }}</label>
                                     <input id="direccion" type="text"
                                            class="form-control @error('direccion') is-invalid @enderror"
-                                           name="direccion" value="{{ old('direccion') }}" required
+                                           name="direccion" value="{{ old('direccion') }}" 
+                                           oninput="value = value.toUpperCase()" required
                                            autocomplete="direccion">
 
                                     @error('direccion')
@@ -318,6 +325,7 @@
                                     <input id="academico_institucion" type="text"
                                            class="form-control @error('academico_institucion') is-invalid @enderror"
                                            name="academico_institucion" value="{{ old('academico_institucion') }}"
+                                           oninput="value = value.toUpperCase()" 
                                            required autocomplete="academico_institucion">
 
                                     @error('academico_institucion')
@@ -331,6 +339,7 @@
                                     <input id="academico_titulo" type="text"
                                            class="form-control @error('academico_titulo') is-invalid @enderror"
                                            name="academico_titulo" value="{{ old('academico_titulo') }}" required
+                                           oninput="value = value.toUpperCase()" 
                                            autocomplete="academico_titulo">
 
                                     @error('academico_titulo')
