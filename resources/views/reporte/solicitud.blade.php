@@ -1,10 +1,10 @@
 @php
-
     Fpdf::AddPage('P','Letter');
     Fpdf::SetFont('Courier', 'B', 18);
 
     Fpdf::Image('./images/logo.png',20,10,20,20);
-    Fpdf::Image($user->credencializacion_fotografia,180,10,20,20);
+
+    Fpdf::Image("{$user->credencializacion_fotografia}",180,10,20,20);
     Fpdf::ln(5);
 
     Fpdf::SetFont('Arial', 'B', 20);
