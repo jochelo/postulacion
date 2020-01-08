@@ -54,6 +54,7 @@ class TestController extends Controller
         } else {
             $test['activo'] = false;
         }
+        Test::create($test);
         return redirect('tests/');
     }
 
@@ -113,7 +114,8 @@ class TestController extends Controller
         return redirect('tests/');
     }
 
-    public function preguntasTestGet() {
+    public function preguntasTestGet()
+    {
         $testCount = Test::count();
         if ($testCount > 0) {
             $test_id = Test::first()->test_id;
@@ -137,11 +139,12 @@ class TestController extends Controller
             ]);
         }
     }
+
     public function preguntasTest(Request $request)
     {
         $pregunta = null;
         $state = $request->input('state');
-        if($state === null){
+        if ($state === null) {
             $state = 'list';
         }
         $testCount = Test::count();
@@ -156,13 +159,58 @@ class TestController extends Controller
                 $data = [
                     'respuesta_descripcion' => $request->input('respuesta_descripcion'),
                     'pregunta_id' => $request->input('pregunta_id'),
-                    'correcto' => Respuesta::where('pregunta_id', $request->input('pregunta_id'))->count() === 0 ? true: false
+                    'correcto' => Respuesta::where('pregunta_id', $request->input('pregunta_id'))->count() === 0 ? true : false
                 ];
                 Respuesta::create($data);
                 $state = 'list-respuestas';
             }
-            $pregunta = Pregunta::find(json_decode($request->input('pregunta'), true)['pregunta_id']);
+            if ($state === 'create-pregunta') {
+                $data = [
+                    'pregunta_titulo' => $request->input('pregunta_titulo'),
+                    'test_id' => $test_id,
+                ];
+                Pregunta::create($data);
+                $state = 'list';
+                $preguntas = Pregunta::where('test_id', $test['test_id'])->get();
+                return view('pregunta.index', [
+                    'tests' => $tests,
+                    'test_id' => $test['test_id'],
+                    'preguntas' => $preguntas,
+                    'state' => $state,
+                    'pregunta' => null
+                ]);
+            }
+            if ($state === 'destroy-pregunta') {
+                Pregunta::destroy($request->input('pregunta_id'));
+                $state = 'list';
+                $preguntas = Pregunta::where('test_id', $test['test_id'])->get();
+                return view('pregunta.index', [
+                    'tests' => $tests,
+                    'test_id' => $test['test_id'],
+                    'preguntas' => $preguntas,
+                    'state' => $state,
+                    'pregunta' => null
+                ]);
+            }
+
+            if ($state === 'destroy-respuesta') {
+                Respuesta::destroy($request->input('respuesta_id'));
+                $state = 'list-respuestas';
+                $preguntas = Pregunta::where('test_id', $test['test_id'])->get();
+            }
+
+            if ($state === 'set-respuesta-correcta') {
+                Respuesta::where('pregunta_id', $request->input('pregunta_id'))->update([
+                    'correcto' => false
+                ]);
+                Respuesta::find($request->input('respuesta_id'))->update([
+                    'correcto' => true
+                ]);
+                $state = 'list-respuestas';
+                $preguntas = Pregunta::where('test_id', $test['test_id'])->get();
+            }
             $preguntas = Pregunta::where('test_id', $test['test_id'])->get();
+            $pregunta = Pregunta::find(json_decode($request->input('pregunta'), true)['pregunta_id']);
 
             return view('pregunta.index', [
                 'tests' => $tests,

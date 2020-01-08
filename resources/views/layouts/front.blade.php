@@ -255,7 +255,7 @@
         <footer class="sticky-footer bg-white">
             <div class="container my-auto">
                 <div class="copyright text-center my-auto">
-                    <span>Copyright &copy; 2019</span>
+                    <span>Copyright &copy; 2019 - <strong>SERECI ORURO</strong></span>
                 </div>
             </div>
         </footer>
