@@ -4,7 +4,6 @@
 
     Fpdf::Image('./images/logo.png',20,10,20,20);
 
-    Fpdf::Image("{$user->credencializacion_fotografia}",180,10,20,20);
     Fpdf::ln(5);
 
     Fpdf::SetFont('Arial', 'B', 20);
@@ -32,7 +31,7 @@
 
     Fpdf::ln(2);
     Fpdf::cell(5, 8, "", 0, 0, 'C', false);
-    Fpdf::cell(35, 8, "Cargo que Postula: ", 0, 0, 'L', false);
+    Fpdf::cell(35, 8, "Cargo a Postular: ", 0, 0, 'L', false);
     Fpdf::SetFillColor(225,221,124);
     Fpdf::cell(145, 8, $user->cargo_descripcion, 0, 1, 'C', true);
     Fpdf::ln(2);

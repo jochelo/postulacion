@@ -64,6 +64,12 @@
                                 </tbody>
                             </table>
                         </div>
+                        <br>
+                        <div class="row">
+                            <div class="offset-md-3 col-lg-6 text-center">
+                                {{ $users->links() }}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

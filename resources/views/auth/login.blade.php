@@ -68,7 +68,16 @@
             <br>
             <div class="card">
                 <div class="card-header">
-                    NOTICIAS
+                    COMUNICADO N. 2
+                </div>
+                <div class="card-body">
+                    <img src="noticias/noticia2.jpeg" class="img-fluid">
+                </div>
+            </div>
+            <br>
+            <div class="card">
+                <div class="card-header">
+                    COMUNICADO N. 1
                 </div>
                 <div class="card-body">
                     <img src="noticias/noticia1.jpeg" class="img-fluid">

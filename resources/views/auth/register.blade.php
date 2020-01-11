@@ -6,7 +6,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3>{{ __('POSTULACI脫N') }}</h3>
+                        <h3>{{ __('POSTULACION') }}</h3>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('registrar') }}" enctype="multipart/form-data">
@@ -106,8 +106,8 @@
                                     <div class="custom-file">
                                         <input type="file" id="foto_carnet"
                                                name="foto_carnet"
-                                               class="" accept="image\" lang="es" onchange="fileci($event)">
-
+                                               class="" accept="application/pdf" lang="es" onchange="fileci($event)">
+                                        <strong class="text-danger">Solo documento pdf es permitido</strong>
                                     </div>
                                     @error('foto_carnet')
                                     <span class="invalid-feedback" role="alert">
@@ -245,7 +245,7 @@
                                     <div class="custom-file">
                                         <input type="file" id="credencializacion_fotografia"
                                                name="credencializacion_fotografia"
-                                               accept="image\">
+                                               accept="image/*">
                                         <strong class="text-danger">Solo imagenes .jpg y .png son permitidas</strong>
                                     </div>
                                     @error('credencializacion_fotografia')
@@ -273,7 +273,8 @@
                                     <div class="custom-file">
                                         <input type="file" id="foto_militar"
                                                name="foto_militar"
-                                               accept="image\" lang="es">
+                                               accept="application/pdf" lang="es">
+                                        <strong class="text-danger">Solo documento pdf es permitido</strong>
                                     </div>
                                     @error('foto_militar')
                                     <span class="invalid-feedback" role="alert">
@@ -285,12 +286,12 @@
                             <div class="row">
                                 <div class="col-12">
                                     <br>
-                                    <h4>Formaci贸n <strong>Academica</strong></h4>
+                                    <h4>Formacion <strong>Academica</strong></h4>
                                     <div class="text-danger">El grado academico ingresado debe corresponder al solicitado en los <strong>Terminos de Referencia</strong> del cargo al que postula</div>
                                     <hr>
                                 </div>
                                 {{--grado academico--}}
-                                <div class="form-group col-md-4">
+                                <div class="form-group col-md-2">
                                     <label for="academico_grado">{{ __('Grado Academico') }}</label>
                                     <select id="academico_grado"
                                             class="form-control @error('academico_grado') is-invalid @enderror"
@@ -310,8 +311,8 @@
                                     </span>
                                     @enderror
                                 </div>
-                                <div class="form-group col-md-4">
-                                    <label for="academico_gestion">{{ __('Gesti贸n Academica') }}</label>
+                                <div class="form-group col-md-2">
+                                    <label for="academico_gestion">{{ __('Gestion Academica') }}</label>
                                     <input id="academico_gestion" type="text"
                                            class="form-control @error('academico_gestion') is-invalid @enderror"
                                            name="academico_gestion" value="{{ old('academico_gestion') }}" required
