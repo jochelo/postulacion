@@ -2,70 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="139af3c8-ffe1-4396-bf35-c262ef3d9f70" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/docs/actas.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/bdd/serecioruro_postulacion110120200247.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/serecioruro_postulacion100120201203.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/serecioruro_postulacion100120201948.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/noticias/noticia2.jpeg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/.editorconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" afterPath="$PROJECT_DIR$/.gitattributes" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/postulacion.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/postulacion.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.styleci.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.styleci.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/IsAdmin.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/IsAdmin.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/database/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/UserFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/UserFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2013_01_04_162545_create_cargos_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2013_01_04_162545_create_cargos_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2014_01_04_163250_create_nivels_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_01_04_163250_create_nivels_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_100000_create_password_resets_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_100000_create_password_resets_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_08_19_000000_create_failed_jobs_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_08_19_000000_create_failed_jobs_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_01_04_225757_create_requisitos_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_01_04_225757_create_requisitos_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_01_06_210737_create_tests_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_01_06_210737_create_tests_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_01_06_211632_create_preguntas_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_01_06_211632_create_preguntas_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_01_06_212346_create_respuestas_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_01_06_212346_create_respuestas_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_01_06_213627_create_test_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_01_06_213627_create_test_users_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_01_06_213805_create_respuesta_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_01_06_213805_create_respuesta_users_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_01_06_220638_create_requisito_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_01_06_220638_create_requisito_users_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/F6 ACTUALIZADO 2017_2018.xls" beforeDir="false" afterPath="$PROJECT_DIR$/docs/F6 ACTUALIZADO 2017_2018.xls" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/Reglamento_Actualizacion_PEB_EG_2019.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/docs/Reglamento_Actualizacion_PEB_EG_2019.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/diagrama-postulacion.eap" beforeDir="false" afterPath="$PROJECT_DIR$/docs/diagrama-postulacion.eap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/phpunit.xml" beforeDir="false" afterPath="$PROJECT_DIR$/phpunit.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/noticias/noticia1.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/public/noticias/noticia1.jpeg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/tdrs/1 TDR Coordinador General.docx" beforeDir="false" afterPath="$PROJECT_DIR$/public/tdrs/1 TDR Coordinador General.docx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/tdrs/10 TDR Comunicador.docx" beforeDir="false" afterPath="$PROJECT_DIR$/public/tdrs/10 TDR Comunicador.docx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/tdrs/2TDR Coordinador Electoral.docx" beforeDir="false" afterPath="$PROJECT_DIR$/public/tdrs/2TDR Coordinador Electoral.docx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/tdrs/3 TDR NOTARIO OPERADOR.docx" beforeDir="false" afterPath="$PROJECT_DIR$/public/tdrs/3 TDR NOTARIO OPERADOR.docx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/tdrs/4 TDR AUXILIAR ADMINISTRATIVO FINANCIERO.docx" beforeDir="false" afterPath="$PROJECT_DIR$/public/tdrs/4 TDR AUXILIAR ADMINISTRATIVO FINANCIERO.docx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/tdrs/5 TDR Capacitador y Control de Calidad.docx" beforeDir="false" afterPath="$PROJECT_DIR$/public/tdrs/5 TDR Capacitador y Control de Calidad.docx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/tdrs/6 TDR Tecnico de Logistica.docx" beforeDir="false" afterPath="$PROJECT_DIR$/public/tdrs/6 TDR Tecnico de Logistica.docx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/tdrs/7 TDR Tecnico de Soporte.docx" beforeDir="false" afterPath="$PROJECT_DIR$/public/tdrs/7 TDR Tecnico de Soporte.docx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/tdrs/8 TDR Auxiliar Tecnico.docx" beforeDir="false" afterPath="$PROJECT_DIR$/public/tdrs/8 TDR Auxiliar Tecnico.docx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/tdrs/9 TDR Tecnico en Comunicacion e Informacion.docx" beforeDir="false" afterPath="$PROJECT_DIR$/public/tdrs/9 TDR Tecnico en Comunicacion e Informacion.docx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/tdrs/CONVOCATORIA SERECI 2020.docx" beforeDir="false" afterPath="$PROJECT_DIR$/public/tdrs/CONVOCATORIA SERECI 2020.docx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/tdrs/F6 ACTUALIZADO 2017_2018 (1).xls" beforeDir="false" afterPath="$PROJECT_DIR$/public/tdrs/F6 ACTUALIZADO 2017_2018 (1).xls" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/tdrs/Reglamento_Actualizacion_PEB_EG_2019.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/public/tdrs/Reglamento_Actualizacion_PEB_EG_2019.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/reporte/solicitud.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/reporte/solicitud.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/user/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/user/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.php" beforeDir="false" afterPath="$PROJECT_DIR$/server.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/CreatesApplication.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/CreatesApplication.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/ExampleTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/ExampleTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/TestCase.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/TestCase.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Unit/ExampleTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Unit/ExampleTest.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpack.mix.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.mix.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -264,7 +202,7 @@
       <workItem from="1578342724063" duration="42653000" />
       <workItem from="1578419520741" duration="18776000" />
       <workItem from="1578447193127" duration="145000" />
-      <workItem from="1578724792956" duration="2583000" />
+      <workItem from="1578724792956" duration="3367000" />
     </task>
     <servers />
   </component>
@@ -280,10 +218,10 @@
       <screen x="0" y="27" width="1366" height="741" />
     </state>
     <state x="339" y="225" key="com.intellij.ide.util.TipDialog/0.27.1366.741@0.27.1366.741" timestamp="1578155060549" />
-    <state x="346" y="89" width="672" height="160" key="search.everywhere.popup" timestamp="1578726737799">
+    <state x="346" y="89" width="672" height="160" key="search.everywhere.popup" timestamp="1578727655369">
       <screen x="0" y="27" width="1366" height="741" />
     </state>
-    <state x="346" y="89" width="672" height="160" key="search.everywhere.popup/0.27.1366.741@0.27.1366.741" timestamp="1578726737799" />
+    <state x="346" y="89" width="672" height="160" key="search.everywhere.popup/0.27.1366.741@0.27.1366.741" timestamp="1578727655369" />
     <state x="408" y="289" width="540" height="212" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1578725702103">
       <screen x="0" y="27" width="1366" height="741" />
     </state>

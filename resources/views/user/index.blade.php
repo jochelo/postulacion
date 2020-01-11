@@ -28,7 +28,7 @@
                                 <tbody>
                                 @foreach($users as $user)
                                     <tr>
-                                        <td>{{$loop->index+1}}</td>
+                                        <td>{{ ($users->currentPage() - 1) * $users->perPage() + $loop->index + 1 }}</td>
                                         <td>
                                             <img src="{{$user->credencializacion_fotografia}}" height="125">
                                         </td>
