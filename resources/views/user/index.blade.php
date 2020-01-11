@@ -22,7 +22,6 @@
                                     <th scope="col">Celular</th>
                                     <th scope="col">Grado Academico</th>
                                     <th scope="col">Titulo Academico</th>
-                                    <th scope="col">Momento de Registro</th>
                                     <th scope="col">Acciones</th>
                                 </tr>
                                 </thead>
@@ -40,7 +39,6 @@
                                         <td>{{$user->telefono_celular}}</td>
                                         <td>{{$user->academico_grado}}</td>
                                         <td>{{$user->academico_titulo}}</td>
-                                        <td>{{$user->created_at}}</td>
                                     <td>
                                         <div class="btn-group">
                                             <!--<a class="btn btn-border-none btn-sm btn-outline-success "
