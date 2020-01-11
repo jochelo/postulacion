@@ -2,6 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="139af3c8-ffe1-4396-bf35-c262ef3d9f70" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/docs/actas.zip" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/bdd/serecioruro_postulacion110120200247.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/serecioruro_postulacion100120201203.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/serecioruro_postulacion100120201948.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/noticias/noticia2.jpeg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/.editorconfig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" afterPath="$PROJECT_DIR$/.gitattributes" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
@@ -205,25 +210,6 @@
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
   </component>
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="postulacion" type="b2602c69:ProjectViewProjectNode" />
-              <item name="postulacion" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="Scope" />
-    </panes>
-  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -278,7 +264,7 @@
       <workItem from="1578342724063" duration="42653000" />
       <workItem from="1578419520741" duration="18776000" />
       <workItem from="1578447193127" duration="145000" />
-      <workItem from="1578724792956" duration="1746000" />
+      <workItem from="1578724792956" duration="2583000" />
     </task>
     <servers />
   </component>
@@ -294,10 +280,10 @@
       <screen x="0" y="27" width="1366" height="741" />
     </state>
     <state x="339" y="225" key="com.intellij.ide.util.TipDialog/0.27.1366.741@0.27.1366.741" timestamp="1578155060549" />
-    <state x="346" y="89" width="672" height="160" key="search.everywhere.popup" timestamp="1578726281298">
+    <state x="346" y="89" width="672" height="160" key="search.everywhere.popup" timestamp="1578726737799">
       <screen x="0" y="27" width="1366" height="741" />
     </state>
-    <state x="346" y="89" width="672" height="160" key="search.everywhere.popup/0.27.1366.741@0.27.1366.741" timestamp="1578726281298" />
+    <state x="346" y="89" width="672" height="160" key="search.everywhere.popup/0.27.1366.741@0.27.1366.741" timestamp="1578726737799" />
     <state x="408" y="289" width="540" height="212" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1578725702103">
       <screen x="0" y="27" width="1366" height="741" />
     </state>
