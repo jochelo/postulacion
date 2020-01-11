@@ -18,7 +18,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users=User::where('es_admin','=',false)->orderBy('nombres','asc')->paginate(100);
+        $users=User::where('es_admin','=',false)->orderBy('user_id','asc')->paginate(100);
         // dd($users);
         return view('user.index',compact('users'));
     }
