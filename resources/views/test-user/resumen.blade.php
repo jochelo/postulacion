@@ -36,5 +36,38 @@
                 </div>
             </div>
         </div>
+        <br>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        POSTULANTES QUE HICIERON MAL USO DLE SISTEMA <br>
+                        <small>Actualizacion de la pagina, durante la evaluacion online</small>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th>N.</th>
+                                    <th>Numero de Carnet</th>
+                                    <th>Postulante</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($postulantes_no_siguieron_instrucciones as $postulante)
+                                    <tr>
+                                        <td>{{ $loop->index + 1 }}</td>
+                                        <td>{{ $postulante['numero_carnet']  }}</td>
+                                        <td>{{ $postulante['apellido_paterno'] }} {{ $postulante['apellido_materno'] }} {{ $postulante['nombres'] }}</td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection
