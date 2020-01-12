@@ -91,17 +91,19 @@ class TestUserController extends Controller
 
     public function resumen() {
         $test_users_ids = TestUser::where('nota', '=', 0)->where('created_at', '>', '2020-01-12 10:00:00')->pluck('user_id');
+        $test_users_ids2 = TestUser::where('nota', '=', 0)->where('created_at', '<=', '2020-01-12 10:00:00')->pluck('user_id');
         $data = [
             'total' => TestUser::count(),
             'aprobados' => TestUser::where('nota', '>', 50)->count(),
             'reprobados' => TestUser::where('nota', '<=', 50)->count(),
             'con_nota_cero' => TestUser::where('nota', '=', 0)->count(),
             'con_problemas_sistema' => TestUser::where('nota', '=', 0)->where('created_at', '<=', '2020-01-12 10:00:00')->count(),
-            'no_siguio_instrucciones' => TestUser::where('nota', '=', 0)->where('created_at', '>', '2020-01-12 10:00:00')->count()
+            'no_siguio_instrucciones' => TestUser::where('nota', '=', 0)->where('created_at', '>', '2020-01-12 10:00:00')->count(),
         ];
         return view('test-user/resumen', [
             'resumen' => $data,
-            'postulantes_no_siguieron_instrucciones' => User::whereIn('user_id', $test_users_ids)->orderBy('numero_carnet')->get()
+            'postulantes_no_siguieron_instrucciones' => User::whereIn('user_id', $test_users_ids)->orderBy('numero_carnet')->get(),
+            'postulantes_con_problemas_sistema' => User::whereIn('user_id', $test_users_ids2)->orderBy('numero_carnet')->get()
         ]);
     }
 
