@@ -49,7 +49,7 @@ class UserController extends Controller
         $cargos = Cargo::get();
         return view('resultados.resultados', [
             'cargos' => $cargos,
-            'cargo_id' => 2,
+            'cargo_id' => 0,
             'test_users' => $test_users
         ]);
     }

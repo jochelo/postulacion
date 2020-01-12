@@ -6,17 +6,24 @@
                 RESULTADOS EVALUACION ONLINE POR CARGO
             </div>
             <div class="card-body">
-                <form action="{{ url('resultados') }}" method="post">
+                <form action="{{ url('/resultados') }}" method="post">
                     @csrf
-                    <div class="form-group">
-                        <select class="form-control" name="cargo_id" id="cargo_id">
-                            @foreach($cargos as $cargo)
-                            <option @if ($cargo_id === $cargo['cargo_id'])
-                                    selected = "selected"
-                                    @endif
-                                    value="{{ $cargo['cargo_id'] }}">{{ $cargo['cargo_descripcion'] }}</option>
-                            @endforeach
-                        </select>
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <div class="form-group">
+                                <select class="form-control" name="cargo_id" id="cargo_id">
+                                    @foreach($cargos as $cargo)
+                                        <option @if ($cargo_id === $cargo['cargo_id'])
+                                                selected="selected"
+                                                @endif
+                                                value="{{ $cargo['cargo_id'] }}">{{ $cargo['cargo_descripcion'] }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <button type="submit" class="btn btn-primary btn-block">GENERAR</button>
+                        </div>
                     </div>
                 </form>
                 <br>
@@ -48,10 +55,3 @@
         </div>
     </div>
 @endsection
-
-<script>
-    var select = document.getElementById('cargo_id');
-    select.addEventListener('change', function () {
-        this.form.submit();
-    }, false);
-</script>

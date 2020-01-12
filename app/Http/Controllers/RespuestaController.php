@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Cargo;
 use App\RespuestaUser;
 use App\TestUser;
 use App\User;
@@ -111,6 +112,36 @@ class RespuestaController extends Controller
         }
 
         return response()->json('Limpieza de errores en tests', 200);
+    }
+
+
+    public function resultados() {
+        $request = request()->all();
+        $cargo_id = 0;
+        $test_users = null;
+        if (isset($request['cargo_id'])) {
+            $cargo_id = $request['cargo_id'];
+        }
+
+        if ($cargo_id === 0) {
+            $test_users = TestUser::orderBy('nota', 'desc')->get();
+        } else {
+            $user_ids = User::where('cargo_id', $cargo_id)->pluck('user_id');
+            $test_users = TestUser::whereIn('user_id', $user_ids)
+                ->orderBy('nota', 'desc')->get();
+            dd($test_users);
+        }
+        $cargos = Cargo::get();
+        return response()->json([
+            'cargos' => $cargos,
+            'cargo_id' => 0,
+            'test_users' => $test_users
+        ]);
+        /*        return view('resultados.resultados', [
+                    'cargos' => $cargos,
+                    'cargo_id' => 0,
+                    'test_users' => $test_users
+                ]);*/
     }
 
 }
