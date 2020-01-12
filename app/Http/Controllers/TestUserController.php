@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\RespuestaUser;
 use App\TestUser;
 use App\User;
 use Illuminate\Http\Request;
@@ -91,19 +92,50 @@ class TestUserController extends Controller
 
     public function resumen() {
         $test_users_ids = TestUser::where('nota', '=', 0)->where('created_at', '>', '2020-01-12 10:00:00')->pluck('user_id');
-        $test_users_ids2 = TestUser::where('nota', '=', 0)->where('created_at', '<=', '2020-01-12 10:00:00')->pluck('user_id');
+
+        /*
+         * postulantes con error antes de las 10am
+         * */
+        $postulantes_con_error = [];
+        $postulantes_con_error_count = 0;
+        $test_users_ids_lt10 = TestUser::where('created_at', '<=', '2020-01-12 10:00:00')->pluck('test_user_id');
+        foreach ($test_users_ids_lt10 as $test_user_id) {
+            $cantidad = RespuestaUser::where('test_user_id', $test_user_id)->count();
+            if ($cantidad < 10) {
+                $postulantes_con_error_count++;
+                $user_id = TestUser::find($test_user_id)->user_id;
+                array_push($postulantes_con_error, User::find($user_id));
+            }
+        }
+        /*
+         * postulantes que no siguieron las instrucciones despues de las 10am
+         * */
+        $postulantes_no_siguieron = [];
+        $postulantes_no_siguieron_count = 0;
+        $test_users_ids_gt10 = TestUser::where('created_at', '>', '2020-01-12 10:00:00')->pluck('test_user_id');
+        foreach ($test_users_ids_gt10 as $test_user_id) {
+            $cantidad = RespuestaUser::where('test_user_id', $test_user_id)->count();
+            if ($cantidad < 10) {
+                $postulantes_no_siguieron_count++;
+                $user_id = TestUser::find($test_user_id)->user_id;
+                array_push($postulantes_no_siguieron, User::find($user_id));
+            }
+        }
+
+
+
         $data = [
             'total' => TestUser::count(),
             'aprobados' => TestUser::where('nota', '>', 50)->count(),
             'reprobados' => TestUser::where('nota', '<=', 50)->count(),
             'con_nota_cero' => TestUser::where('nota', '=', 0)->count(),
-            'con_problemas_sistema' => TestUser::where('nota', '=', 0)->where('created_at', '<=', '2020-01-12 10:00:00')->count(),
-            'no_siguio_instrucciones' => TestUser::where('nota', '=', 0)->where('created_at', '>', '2020-01-12 10:00:00')->count(),
+            'con_problemas_sistema' => $postulantes_con_error_count,
+            'no_siguio_instrucciones' => $postulantes_no_siguieron_count,
         ];
         return view('test-user/resumen', [
             'resumen' => $data,
-            'postulantes_no_siguieron_instrucciones' => User::whereIn('user_id', $test_users_ids)->orderBy('numero_carnet')->get(),
-            'postulantes_con_problemas_sistema' => User::whereIn('user_id', $test_users_ids2)->orderBy('numero_carnet')->get()
+            'postulantes_no_siguieron_instrucciones' => $postulantes_no_siguieron,
+            'postulantes_con_problemas_sistema' => $postulantes_con_error
         ]);
     }
 

@@ -56,6 +56,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
+
                                 @foreach($postulantes_no_siguieron_instrucciones as $postulante)
                                     <tr>
                                         <td>{{ $loop->index + 1 }}</td>
