@@ -17,8 +17,8 @@ class TestUser extends Model
         'nivel_id',
     ];
     protected $dates=['deleted_at'];
-
     public function respuestaUsers(){
         return $this->hasMany('App\RespuestaUser');
     }
+
 }

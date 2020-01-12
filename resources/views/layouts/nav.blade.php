@@ -53,6 +53,11 @@
     @else
         @if(Auth::user()->es_admin)
         <li class="nav-item">
+            <a class="nav-link" href="{{url('/resumen')}}">
+                <i class="fas fa-fw fa-file"></i>
+                <span>Resumen General</span></a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link" href="{{url('/tests')}}">
                 <i class="fas fa-fw fa-file"></i>
                 <span>Test</span></a>

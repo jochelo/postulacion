@@ -2,10 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\TestUser;
 use Illuminate\Http\Request;
 
 class TestUserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -81,4 +87,19 @@ class TestUserController extends Controller
     {
         //
     }
+
+    public function resumen() {
+        $data = [
+            'total' => TestUser::count(),
+            'aprobados' => TestUser::where('nota', '>', 50)->count(),
+            'reprobados' => TestUser::where('nota', '<=', 50)->count(),
+            'con_nota_cero' => TestUser::where('nota', '=', 0)->count(),
+            'con_problemas_sistema' => TestUser::where('nota', '=', 0)->where('created_at', '<=', '2020-01-12 10:00:00')->count(),
+            'no_siguio_instrucciones' => TestUser::where('nota', '=', 0)->where('created_at', '>', '2020-01-12 10:00:00')->count()
+        ];
+        return view('test-user/resumen', [
+            'resumen' => $data
+        ]);
+    }
+
 }

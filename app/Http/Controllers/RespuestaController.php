@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\TestUser;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -89,4 +90,5 @@ class RespuestaController extends Controller
         User::where('es_admin', false)->whereNotIn('user_id', $ids)->delete();
         return response()->json('habilitados');
     }
+
 }
