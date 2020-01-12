@@ -14,7 +14,7 @@
 Route::get('/', function () {
     return redirect('/login');
 });
-Route::post('/registrar', 'Auth\RegisterController@registrar')->name('registrar');
+//Route::post('/registrar', 'Auth\RegisterController@registrar')->name('registrar');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -24,4 +24,7 @@ Route::resource('/preguntas','PreguntaController')->middleware('admin');
 Route::get('preguntas-test', 'TestController@preguntasTestGet')->middleware('admin');
 Route::post('preguntas-test','TestController@preguntasTest')->middleware('admin');
 Route::get('reporte/solicitud','ReporteController@solicitud');
+
+Route::get('/evaluacion-online','TestController@evaluacionOnline')->name('evaluacion-online');
+Route::post('show-test','TestController@testInit');
 

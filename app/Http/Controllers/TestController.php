@@ -6,9 +6,13 @@ use App\Cargo;
 use App\Nivel;
 use App\Pregunta;
 use App\Respuesta;
+use App\RespuestaUser;
 use App\Test;
+use App\TestUser;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 
 class TestController extends Controller
 {
@@ -228,5 +232,148 @@ class TestController extends Controller
                 'pregunta' => $pregunta
             ]);
         }
+    }
+
+    public function evaluacionOnline()
+    {
+        return view('test.evaluacion-online');
+    }
+
+    public function testInit(Request $request)
+    {
+        $state = $request->input('state');
+        if ($state === 'listInit') {
+            $user = Auth::user();
+            $test = Test::where('nivel_id', $user['nivel_id'])->first();
+            $testUser = TestUser::where('user_id', $user->user_id)->
+            where('test_id', $test->test_id)->first();
+            if (!isset($testUser)) {
+                $preguntas = Pregunta::where('test_id', $test['test_id'])->orderByRaw('rand()')->take($test->num_preguntas)->get();
+                $item = 0;
+                $pregunta = $preguntas[$item];
+                //dd($preguntas);
+                $state = 'testInit';
+                $date=Carbon::now();
+                //$date=Carbon::parse($date);
+                //dd($date);
+            }
+            else{
+                $state = 'finTest';
+                $item=$test->num_preguntas+2;
+                $test=$testUser->nota;
+                $pregunta=null;
+                $preguntas=null;
+                $date=null;
+            }
+        }
+        if ($state == 'createRespuestaUser') {
+            $date=Carbon::parse($request->input('datenow'));
+            //dd($date);
+            $tiempoTope=Carbon::now()->subMinutes(15);
+
+            $preguntas = json_decode($request->input('preguntas'), true);
+            $item = $request->input('item') + 1;
+            $test = Test::find($preguntas[0]['test_id']);
+            //dd($request->input('datenow'));
+            if($date>=$tiempoTope) {
+                //siguiente pregunta
+                if ($item < $test->num_preguntas)
+                    $pregunta = $preguntas[$item];
+
+                //si estamos en la ultima pregunta
+                if ($item <= $test->num_preguntas) {
+                    //dd($preguntas);
+                    $state = 'testInit';
+
+                    //crear nuevo testUser(una sola vez)---user_id,test_id unicos
+                    $testUser = TestUser::where('user_id', Auth::user()['user_id'])
+                        ->where('test_id', $test->test_id)
+                        ->first();
+                    if (!isset($testUser)) {
+                        $nivel = Nivel::find($test->nivel_id);
+                        TestUser::create([
+                            'nota' => 0,
+                            'user_id' => Auth::user()['user_id'],
+                            'test_id' => $test->test_id,
+                            'nivel_id' => $nivel->nivel_id,
+                        ]);
+                    }
+                    $testUser = TestUser::where('user_id', Auth::user()['user_id'])
+                        ->where('test_id', $test->test_id)
+                        ->first();
+                    $respuesta = Respuesta::find($request->input('respuesta_id'));
+
+                    ///Crea respuesta una sola vez,(respuesta_id,test_user_id) unicas
+                    $respuestaUser = RespuestaUser::where('respuesta_id', $respuesta->respuesta_id)
+                        ->where('test_user_id', $testUser->test_user_id)
+                        ->first();
+                    if (!isset($respuestaUser)) {
+                        RespuestaUser::create([
+                            'test_user_id' => $testUser->test_user_id,
+                            'respuesta_id' => $respuesta->respuesta_id,
+                            'correcto' => $respuesta->correcto ? 1 : 0
+                        ]);
+                    }
+                }
+                if ($item >= $test->num_preguntas) {
+                    $state = 'finTest';
+                    $testUser = TestUser::where('user_id', Auth::user()['user_id'])
+                        ->where('test_id', $preguntas[0]['test_id'])
+                        ->first();
+                    //dd($testUser);
+                    $respuestasUser = RespuestaUser::where('test_user_id', $testUser->test_user_id)->get();
+
+                    //calcular nota final
+                    $ponderacion = 100 / $test->num_preguntas;
+                    $notaf = 0;
+                    foreach ($respuestasUser as $respuestaUser) {
+                        if ($respuestaUser->correcto)
+                            $notaf += $ponderacion;
+                    }
+                    $testUser->nota = $notaf;
+                    $testUser->save();
+                    $pregunta = null;
+                    $test = $notaf;
+                }
+            }else{
+                //tiempo agotado
+                $state = 'finTest';
+                $testUser = TestUser::where('user_id', Auth::user()['user_id'])
+                    ->where('test_id', $test->test_id)
+                    ->first();
+                while(isset($preguntas[$item-1])){
+                    $respuestaErr=Respuesta::where('pregunta_id',$preguntas[$item-1]['pregunta_id'])
+                        ->where('correcto',false)->first();
+                    RespuestaUser::create([
+                        'test_user_id' => $testUser->test_user_id,
+                        'respuesta_id' => $respuestaErr->respuesta_id,
+                        'correcto' => $respuestaErr->correcto ? 1 : 0
+                    ]);
+                    $item++;
+                }
+                //calcular nota final
+                $respuestasUser = RespuestaUser::where('test_user_id', $testUser->test_user_id)->get();
+                $ponderacion = 100 / $test->num_preguntas;
+                $notaf = 0;
+                foreach ($respuestasUser as $respuestaUser) {
+                    if ($respuestaUser->correcto)
+                        $notaf += $ponderacion;
+                }
+                $testUser->nota = $notaf;
+                $testUser->save();
+                $pregunta = null;
+                $test = $notaf;
+            }
+            $preguntas = (object)$preguntas;
+        }
+        return view('test.show-test-init', [
+            'preguntas' => json_encode($preguntas),
+            'pregunta' => $pregunta,
+            'test' => $test,
+            'item' => $item,
+            'state' => $state,
+            'preguntasRandom' => $preguntas,
+            'datenow' =>$date!=null?$date->toDateTimeString():null
+        ]);
     }
 }

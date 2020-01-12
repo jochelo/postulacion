@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\TestUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -26,7 +27,12 @@ class HomeController extends Controller
 
         if(Auth::user()->es_admin)
             return redirect('users/');
-        else
-            return view('home');
+        else {
+            $testUser=TestUser::where('user_id',Auth::user()['user_id'])->first();
+            if(isset($testUser))
+                return view('home',compact('testUser'));
+            else
+                return view('home');
+        }
     }
 }

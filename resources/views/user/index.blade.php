@@ -5,8 +5,9 @@
         <div class="row">
             <div class="col-12">
                 <div class="card">
-                    <div class="card-header">
-                        <h3>Lista de <strong>Postulantes</strong></h3>
+                    <div class="card-header row">
+                        <h3 class="col-md-6">Lista de <strong>Postulantes</strong></h3>
+                        {{-- <input class="form-control col-md-6" id="s-postulantes" type="text" placeholder="Buscar.."> --}}
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -25,9 +26,9 @@
                                     <th scope="col">Acciones</th>
                                 </tr>
                                 </thead>
-                                <tbody>
+                                <tbody id="t-body">
                                 @foreach($users as $user)
-                                    <tr>
+                                    <tr class="r-body">
                                         <td>{{ ($users->currentPage() - 1) * $users->perPage() + $loop->index + 1 }}</td>
                                         <td>
                                             <img src="{{$user->credencializacion_fotografia}}" height="125">
@@ -75,4 +76,16 @@
             </div>
         </div>
     </div>
+@endsection
+@section('scripts')
+    <script>
+        $(document).ready(function(){
+            $("#s-postulantes").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $(".card-body .r-body").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
 @endsection

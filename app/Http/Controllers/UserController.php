@@ -4,18 +4,21 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Support\Facades\DB;
+
 class UserController extends Controller
 {
+
     public function __construct()
     {
         $this->middleware('auth');
     }
-
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
         $users=User::where('es_admin','=',false)->orderBy('user_id','asc')->paginate(100);
@@ -90,5 +93,26 @@ class UserController extends Controller
         $user->delete();
         return redirect('users/');
 
+    }
+    public function listaPostulantes(){
+        $usersRep=User::select('numero_carnet',DB::raw('count(numero_carnet) as total'))
+            ->where('es_admin','=',false)
+            ->groupBy('numero_carnet')
+            ->having('total','=',1)
+            ->get();
+        $users=User::get();
+        $sw=0;
+        foreach ($usersRep as $userR){
+            foreach($users as $key => $user){
+                if($user->numero_carnet == $userR->numero_carnet && $sw > 0){
+                    //
+                }
+                else{
+                    $sw=0;
+                }
+
+            }
+        }
+        return response()->json($users,200);
     }
 }
