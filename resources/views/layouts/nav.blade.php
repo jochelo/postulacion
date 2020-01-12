@@ -58,6 +58,14 @@
                 <span>Resumen General</span></a>
         </li>
         <li class="nav-item">
+            <form action="{{ url('resultados') }}" method="post">
+                @csrf
+                <button class="nav-link" type="submit">
+                    <i class="fas fa-fw fa-list-alt"></i>
+                    <span>Resultados</span></button>
+            </form>
+        </li>
+        <li class="nav-item">
             <a class="nav-link" href="{{url('/tests')}}">
                 <i class="fas fa-fw fa-file"></i>
                 <span>Test</span></a>
@@ -82,11 +90,11 @@
                 <i class="fas fa-fw fa-file"></i>
                 <span>Documentación</span></a>
         </li>
-        <li class="nav-item">
+{{--        <li class="nav-item">
             <a class="nav-link" href="{{url('/evaluacion-online')}}">
                 <i class="fas fa-fw fa-pen-square"></i>
                 <span>Evaluación Online</span></a>
-        </li>
+        </li>--}}
         @endif
     @endguest
     <!-- Divider -->

@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Cargo;
+use App\TestUser;
 use App\User;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
@@ -13,23 +16,48 @@ class UserController extends Controller
     {
         $this->middleware('auth');
     }
+
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
 
     public function index()
     {
-        $users=User::where('es_admin','=',false)->orderBy('user_id','asc')->paginate(100);
+
+        $users = User::where('es_admin', '=', false)->orderBy('user_id', 'asc')->paginate(100);
         // dd($users);
-        return view('user.index',compact('users'));
+        return view('user.index', compact('users'));
+    }
+
+    public function resultados() {
+        $request = request()->all();
+        $cargo_id = 0;
+        $test_users = null;
+        if (isset($request['cargo_id'])) {
+            $cargo_id = $request['cargo_id'];
+        }
+
+        if ($cargo_id === 0) {
+            $test_users = TestUser::orderBy('nota', 'desc')->get();
+        } else {
+            $user_ids = User::where('cargo_id', $cargo_id)->pluck('user_id');
+            $test_users = TestUser::whereIn('user_id', $user_ids)
+                                    ->orderBy('nota', 'desc')->get();
+        }
+        $cargos = Cargo::get();
+        return view('resultados.resultados', [
+            'cargos' => $cargos,
+            'cargo_id' => 2,
+            'test_users' => $test_users
+        ]);
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
@@ -39,8 +67,8 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Response
      */
     public function store(Request $request)
     {
@@ -50,8 +78,8 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return Response
      */
     public function show($id)
     {
@@ -61,8 +89,8 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return Response
      */
     public function edit($id)
     {
@@ -72,9 +100,9 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param int $id
+     * @return Response
      */
     public function update(Request $request, $id)
     {
@@ -84,35 +112,36 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return Response
      */
     public function destroy($id)
     {
-        $user=User::find($id);
+        $user = User::find($id);
         $user->delete();
         return redirect('users/');
 
     }
-    public function listaPostulantes(){
-        $usersRep=User::select('numero_carnet',DB::raw('count(numero_carnet) as total'))
-            ->where('es_admin','=',false)
+
+    public function listaPostulantes()
+    {
+        $usersRep = User::select('numero_carnet', DB::raw('count(numero_carnet) as total'))
+            ->where('es_admin', '=', false)
             ->groupBy('numero_carnet')
-            ->having('total','=',1)
+            ->having('total', '=', 1)
             ->get();
-        $users=User::get();
-        $sw=0;
-        foreach ($usersRep as $userR){
-            foreach($users as $key => $user){
-                if($user->numero_carnet == $userR->numero_carnet && $sw > 0){
+        $users = User::get();
+        $sw = 0;
+        foreach ($usersRep as $userR) {
+            foreach ($users as $key => $user) {
+                if ($user->numero_carnet == $userR->numero_carnet && $sw > 0) {
                     //
-                }
-                else{
-                    $sw=0;
+                } else {
+                    $sw = 0;
                 }
 
             }
         }
-        return response()->json($users,200);
+        return response()->json($users, 200);
     }
 }
