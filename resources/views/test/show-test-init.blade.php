@@ -70,18 +70,19 @@
                 </div>
             </div>
         </div>
-        <div class="alert alert-warning" role="alert">
-            <h4 class="alert-heading">¡Felicidades! Usted ha concluido la Evaluación!</h4>
-            <p>Dirijase al Menu, Documentación para descargar los documentos requeridos para terminar su tramite.</p>
-            <hr>
-
+        <div class="container">
+            <div class="alert alert-warning" role="alert">
+                <h4 class="alert-heading">¡Felicidades! Usted ha concluido la Evaluación!</h4>
+                <p>Por favor espere la lista de habilitados a traves de la plataforma. Despues de las 9pm del dia de hoy Domingo 12 de enero</p>
+                <hr>
+            </div>
         </div>
     @endif
 @endsection
 @section('scripts')
     <script>
         // Set the date we're counting down to
-        var countDownDate = new Date("{{ $datenow }}").getTime() + (900000) - (1.44e+7);
+        var countDownDate = new Date("{{ $datenow }}").getTime() + (900000);
 
         // Update the count down every 1 second
         var x = setInterval(function () {

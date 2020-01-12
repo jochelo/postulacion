@@ -239,14 +239,22 @@ class TestController extends Controller
         return view('test.evaluacion-online');
     }
 
-    public function testInit(Request $request)
+    public function getTestInit() {
+        return back();
+    }
+
+    public function testInit()
     {
-        $state = $request->input('state');
+        $state = 'listInit';
+        $request = request()->all();
+        if (isset($request['state'])) {
+            $state = $request['state'];
+        }
+
         if ($state === 'listInit') {
             $user = Auth::user();
             $test = Test::where('nivel_id', $user['nivel_id'])->first();
-            $testUser = TestUser::where('user_id', $user->user_id)->
-            where('test_id', $test->test_id)->first();
+            $testUser = TestUser::where('user_id', $user->user_id)->where('test_id', $test->test_id)->first();
             if (!isset($testUser)) {
                 $preguntas = Pregunta::where('test_id', $test['test_id'])->orderByRaw('rand()')->take($test->num_preguntas)->get();
                 $item = 0;
@@ -266,13 +274,14 @@ class TestController extends Controller
                 $date=null;
             }
         }
+
         if ($state == 'createRespuestaUser') {
-            $date=Carbon::parse($request->input('datenow'));
+            $date=Carbon::parse($request['datenow']);
             //dd($date);
             $tiempoTope=Carbon::now()->subMinutes(15);
 
-            $preguntas = json_decode($request->input('preguntas'), true);
-            $item = $request->input('item') + 1;
+            $preguntas = json_decode($request['preguntas'], true);
+            $item = $request['item'] + 1;
             $test = Test::find($preguntas[0]['test_id']);
             //dd($request->input('datenow'));
             if($date>=$tiempoTope) {
@@ -301,7 +310,7 @@ class TestController extends Controller
                     $testUser = TestUser::where('user_id', Auth::user()['user_id'])
                         ->where('test_id', $test->test_id)
                         ->first();
-                    $respuesta = Respuesta::find($request->input('respuesta_id'));
+                    $respuesta = Respuesta::find($request['respuesta_id']);
 
                     ///Crea respuesta una sola vez,(respuesta_id,test_user_id) unicas
                     $respuestaUser = RespuestaUser::where('respuesta_id', $respuesta->respuesta_id)

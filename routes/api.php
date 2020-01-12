@@ -19,3 +19,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('preguntas', 'PreguntaController@store');
 Route::get('/lista-postulantes','UserController@listaPostulantes');
+Route::post('habilitar', 'RespuestaController@habilitar');

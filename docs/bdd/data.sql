@@ -2,10 +2,10 @@
 -- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost:3306
--- Tiempo de generación: 12-01-2020 a las 00:59:46
--- Versión del servidor: 10.1.43-MariaDB-cll-lve
--- Versión de PHP: 7.2.7
+-- Host: localhost:3306
+-- Generation Time: Jan 12, 2020 at 08:23 AM
+-- Server version: 10.1.43-MariaDB-cll-lve
+-- PHP Version: 7.2.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `serecioruro_postulacion`
+-- Database: `serecioruro_postulacion`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `cargos`
+-- Table structure for table `cargos`
 --
 
 CREATE TABLE `cargos` (
@@ -38,7 +38,7 @@ CREATE TABLE `cargos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Volcado de datos para la tabla `cargos`
+-- Dumping data for table `cargos`
 --
 
 INSERT INTO `cargos` (`cargo_id`, `nivel_maximo`, `cargo_descripcion`, `deleted_at`, `created_at`, `updated_at`) VALUES
@@ -57,7 +57,7 @@ INSERT INTO `cargos` (`cargo_id`, `nivel_maximo`, `cargo_descripcion`, `deleted_
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `failed_jobs`
+-- Table structure for table `failed_jobs`
 --
 
 CREATE TABLE `failed_jobs` (
@@ -72,7 +72,7 @@ CREATE TABLE `failed_jobs` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `migrations`
+-- Table structure for table `migrations`
 --
 
 CREATE TABLE `migrations` (
@@ -82,7 +82,7 @@ CREATE TABLE `migrations` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Volcado de datos para la tabla `migrations`
+-- Dumping data for table `migrations`
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
@@ -102,7 +102,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `niveles`
+-- Table structure for table `niveles`
 --
 
 CREATE TABLE `niveles` (
@@ -116,7 +116,7 @@ CREATE TABLE `niveles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Volcado de datos para la tabla `niveles`
+-- Dumping data for table `niveles`
 --
 
 INSERT INTO `niveles` (`nivel_id`, `nivel_numero`, `nivel_descripcion`, `numero_requisitos`, `deleted_at`, `created_at`, `updated_at`) VALUES
@@ -125,7 +125,7 @@ INSERT INTO `niveles` (`nivel_id`, `nivel_numero`, `nivel_descripcion`, `numero_
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `password_resets`
+-- Table structure for table `password_resets`
 --
 
 CREATE TABLE `password_resets` (
@@ -137,7 +137,7 @@ CREATE TABLE `password_resets` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `preguntas`
+-- Table structure for table `preguntas`
 --
 
 CREATE TABLE `preguntas` (
@@ -150,10 +150,17 @@ CREATE TABLE `preguntas` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `preguntas`
+--
+
+INSERT INTO `preguntas` (`pregunta_id`, `pregunta_titulo`, `test_id`, `deleted_at`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, '¿Qué es el Servicio de Registro Cívico?', 1, NULL, NULL, '2020-01-12 17:29:29', '2020-01-12 17:29:29');
+
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `requisitos`
+-- Table structure for table `requisitos`
 --
 
 CREATE TABLE `requisitos` (
@@ -171,7 +178,7 @@ CREATE TABLE `requisitos` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `requisito_users`
+-- Table structure for table `requisito_users`
 --
 
 CREATE TABLE `requisito_users` (
@@ -190,7 +197,7 @@ CREATE TABLE `requisito_users` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `respuestas`
+-- Table structure for table `respuestas`
 --
 
 CREATE TABLE `respuestas` (
@@ -204,10 +211,18 @@ CREATE TABLE `respuestas` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `respuestas`
+--
+
+INSERT INTO `respuestas` (`respuesta_id`, `respuesta_descripcion`, `correcto`, `pregunta_id`, `deleted_at`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Entidad pública dependiente del Tribunal Electoral Departamental responsable de llevar adelante la ejecucion de Procesos Electorales.', 1, 1, NULL, NULL, '2020-01-12 17:30:30', '2020-01-12 17:30:30'),
+(2, 'sdf', 0, 1, '2020-01-12 17:32:18', NULL, '2020-01-12 17:32:15', '2020-01-12 17:32:18');
+
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `respuesta_users`
+-- Table structure for table `respuesta_users`
 --
 
 CREATE TABLE `respuesta_users` (
@@ -224,7 +239,7 @@ CREATE TABLE `respuesta_users` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `tests`
+-- Table structure for table `tests`
 --
 
 CREATE TABLE `tests` (
@@ -241,10 +256,17 @@ CREATE TABLE `tests` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `tests`
+--
+
+INSERT INTO `tests` (`test_id`, `titulo`, `descripcion`, `activo`, `num_preguntas`, `nivel_id`, `cargo_id`, `deleted_at`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'EVALUACIÓN ONLINE DE POSTULACIÓN', 'Evaluación de postulantes al proceso de empadronamiento 2020', 1, 10, 1, 1, NULL, NULL, '2020-01-12 16:07:01', '2020-01-12 16:11:59');
+
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `test_users`
+-- Table structure for table `test_users`
 --
 
 CREATE TABLE `test_users` (
@@ -262,7 +284,7 @@ CREATE TABLE `test_users` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
@@ -306,7 +328,7 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Volcado de datos para la tabla `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`user_id`, `nombres`, `apellido_paterno`, `apellido_materno`, `numero_carnet`, `expedicion`, `foto_carnet`, `estado_civil`, `fecha_nacimiento`, `lugar`, `nacionalidad`, `direccion`, `telefono_celular`, `email`, `sexo`, `academico_grado`, `academico_gestion`, `academico_institucion`, `academico_titulo`, `credencializacion_fotografia`, `telefono`, `fax`, `casilla_postal`, `numero_libreta_militar`, `foto_militar`, `aprobado`, `nivel_completo`, `es_admin`, `disponibilidad`, `nivel_id`, `cargo_id`, `email_verified_at`, `password`, `deleted_at`, `remember_token`, `created_at`, `updated_at`) VALUES
@@ -1000,74 +1022,74 @@ INSERT INTO `users` (`user_id`, `nombres`, `apellido_paterno`, `apellido_materno
 (681, 'OSMAR GONZALO', 'SALAZAR', 'MACHACA', '7297181', 'ORURO', 'https://s3.us-east-1.amazonaws.com/sereci-oruro/postulacion/carnetUsr/1578801753_Escáner_20200111.jpg', 'Soltero(a)', '1990-11-19', 'ORURO', 'nacional', 'ENCINAS NIETO#200 SAMUDIO', '76152168', 'osmarsalazar2@gmail.com', 'Varon', 'Universitaria', '6', 'UNIVERSIDAD TECNICA DE ORURO', 'ELECTROMECANICA', 'https://s3.us-east-1.amazonaws.com/sereci-oruro/postulacion/imgUsr/1578801753_Escáner_20200111.jpg', NULL, NULL, NULL, '01209159510', 'https://s3.us-east-1.amazonaws.com/sereci-oruro/postulacion/libretaMilUsr/1578801753_Escáner_20200111.jpg', 0, 0, 0, 1, 1, 4, NULL, '$2y$10$tal46.3EV01nIVroxaIBVuOTpGpHiFMTkocgYdOdf/j0LtOpeR3UK', NULL, NULL, '2020-01-12 09:02:34', '2020-01-12 09:02:34');
 
 --
--- Índices para tablas volcadas
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `cargos`
+-- Indexes for table `cargos`
 --
 ALTER TABLE `cargos`
   ADD PRIMARY KEY (`cargo_id`);
 
 --
--- Indices de la tabla `failed_jobs`
+-- Indexes for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `migrations`
+-- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `niveles`
+-- Indexes for table `niveles`
 --
 ALTER TABLE `niveles`
   ADD PRIMARY KEY (`nivel_id`);
 
 --
--- Indices de la tabla `password_resets`
+-- Indexes for table `password_resets`
 --
 ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`);
 
 --
--- Indices de la tabla `preguntas`
+-- Indexes for table `preguntas`
 --
 ALTER TABLE `preguntas`
   ADD PRIMARY KEY (`pregunta_id`),
   ADD KEY `preguntas_test_id_foreign` (`test_id`);
 
 --
--- Indices de la tabla `requisitos`
+-- Indexes for table `requisitos`
 --
 ALTER TABLE `requisitos`
   ADD PRIMARY KEY (`requisito_id`),
   ADD KEY `requisitos_nivel_id_foreign` (`nivel_id`);
 
 --
--- Indices de la tabla `requisito_users`
+-- Indexes for table `requisito_users`
 --
 ALTER TABLE `requisito_users`
   ADD PRIMARY KEY (`requisito_user_id`);
 
 --
--- Indices de la tabla `respuestas`
+-- Indexes for table `respuestas`
 --
 ALTER TABLE `respuestas`
   ADD PRIMARY KEY (`respuesta_id`),
   ADD KEY `respuestas_pregunta_id_foreign` (`pregunta_id`);
 
 --
--- Indices de la tabla `respuesta_users`
+-- Indexes for table `respuesta_users`
 --
 ALTER TABLE `respuesta_users`
   ADD PRIMARY KEY (`respuesta_user_id`);
 
 --
--- Indices de la tabla `tests`
+-- Indexes for table `tests`
 --
 ALTER TABLE `tests`
   ADD PRIMARY KEY (`test_id`),
@@ -1075,13 +1097,13 @@ ALTER TABLE `tests`
   ADD KEY `tests_cargo_id_foreign` (`cargo_id`);
 
 --
--- Indices de la tabla `test_users`
+-- Indexes for table `test_users`
 --
 ALTER TABLE `test_users`
   ADD PRIMARY KEY (`test_user_id`);
 
 --
--- Indices de la tabla `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`user_id`),
@@ -1090,112 +1112,112 @@ ALTER TABLE `users`
   ADD KEY `users_cargo_id_foreign` (`cargo_id`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `cargos`
+-- AUTO_INCREMENT for table `cargos`
 --
 ALTER TABLE `cargos`
   MODIFY `cargo_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT de la tabla `failed_jobs`
+-- AUTO_INCREMENT for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `migrations`
+-- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
--- AUTO_INCREMENT de la tabla `niveles`
+-- AUTO_INCREMENT for table `niveles`
 --
 ALTER TABLE `niveles`
   MODIFY `nivel_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT de la tabla `preguntas`
+-- AUTO_INCREMENT for table `preguntas`
 --
 ALTER TABLE `preguntas`
-  MODIFY `pregunta_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `pregunta_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT de la tabla `requisitos`
+-- AUTO_INCREMENT for table `requisitos`
 --
 ALTER TABLE `requisitos`
   MODIFY `requisito_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `requisito_users`
+-- AUTO_INCREMENT for table `requisito_users`
 --
 ALTER TABLE `requisito_users`
   MODIFY `requisito_user_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `respuestas`
+-- AUTO_INCREMENT for table `respuestas`
 --
 ALTER TABLE `respuestas`
-  MODIFY `respuesta_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `respuesta_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT de la tabla `respuesta_users`
+-- AUTO_INCREMENT for table `respuesta_users`
 --
 ALTER TABLE `respuesta_users`
   MODIFY `respuesta_user_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `tests`
+-- AUTO_INCREMENT for table `tests`
 --
 ALTER TABLE `tests`
-  MODIFY `test_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `test_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT de la tabla `test_users`
+-- AUTO_INCREMENT for table `test_users`
 --
 ALTER TABLE `test_users`
   MODIFY `test_user_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `user_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=682;
 
 --
--- Restricciones para tablas volcadas
+-- Constraints for dumped tables
 --
 
 --
--- Filtros para la tabla `preguntas`
+-- Constraints for table `preguntas`
 --
 ALTER TABLE `preguntas`
   ADD CONSTRAINT `preguntas_test_id_foreign` FOREIGN KEY (`test_id`) REFERENCES `tests` (`test_id`) ON DELETE CASCADE;
 
 --
--- Filtros para la tabla `requisitos`
+-- Constraints for table `requisitos`
 --
 ALTER TABLE `requisitos`
   ADD CONSTRAINT `requisitos_nivel_id_foreign` FOREIGN KEY (`nivel_id`) REFERENCES `niveles` (`nivel_id`) ON DELETE CASCADE;
 
 --
--- Filtros para la tabla `respuestas`
+-- Constraints for table `respuestas`
 --
 ALTER TABLE `respuestas`
   ADD CONSTRAINT `respuestas_pregunta_id_foreign` FOREIGN KEY (`pregunta_id`) REFERENCES `preguntas` (`pregunta_id`) ON DELETE CASCADE;
 
 --
--- Filtros para la tabla `tests`
+-- Constraints for table `tests`
 --
 ALTER TABLE `tests`
   ADD CONSTRAINT `tests_cargo_id_foreign` FOREIGN KEY (`cargo_id`) REFERENCES `cargos` (`cargo_id`) ON DELETE CASCADE,
   ADD CONSTRAINT `tests_nivel_id_foreign` FOREIGN KEY (`nivel_id`) REFERENCES `niveles` (`nivel_id`) ON DELETE CASCADE;
 
 --
--- Filtros para la tabla `users`
+-- Constraints for table `users`
 --
 ALTER TABLE `users`
   ADD CONSTRAINT `users_cargo_id_foreign` FOREIGN KEY (`cargo_id`) REFERENCES `cargos` (`cargo_id`) ON DELETE CASCADE,
