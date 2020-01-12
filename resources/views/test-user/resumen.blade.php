@@ -52,6 +52,7 @@
                                     <th>N.</th>
                                     <th>Numero de Carnet</th>
                                     <th>Postulante</th>
+                                    <th>Celular</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -60,6 +61,7 @@
                                         <td>{{ $loop->index + 1 }}</td>
                                         <td>{{ $postulante['numero_carnet']  }}</td>
                                         <td>{{ $postulante['apellido_paterno'] }} {{ $postulante['apellido_materno'] }} {{ $postulante['nombres'] }}</td>
+                                        <td>{{ $postulante['telefono_celular']  }}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>
@@ -84,6 +86,7 @@
                                     <th>N.</th>
                                     <th>Numero de Carnet</th>
                                     <th>Postulante</th>
+                                    <th>Celular</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -92,6 +95,7 @@
                                         <td>{{ $loop->index + 1 }}</td>
                                         <td>{{ $postulante['numero_carnet']  }}</td>
                                         <td>{{ $postulante['apellido_paterno'] }} {{ $postulante['apellido_materno'] }} {{ $postulante['nombres'] }}</td>
+                                        <td>{{ $postulante['telefono_celular'] }}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>
