@@ -87,7 +87,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($postulantes_no_siguieron_instrucciones as $postulante)
+                                @foreach($postulantes_con_problemas_sistema as $postulante)
                                     <tr>
                                         <td>{{ $loop->index + 1 }}</td>
                                         <td>{{ $postulante['numero_carnet']  }}</td>
