@@ -42,7 +42,7 @@
                 <div class="card">
                     <div class="card-header">
                         POSTULANTES QUE HICIERON MAL USO DEL SISTEMA <br>
-                        <small>Actualizacion de la pagina, durante la evaluacion online</small>
+                        <small>Refrescado de la página, durante la evaluación online</small>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">

@@ -104,7 +104,8 @@ class TestUserController extends Controller
             if ($cantidad < 10) {
                 $postulantes_con_error_count++;
                 $user_id = TestUser::find($test_user_id)->user_id;
-                array_push($postulantes_con_error, User::find($user_id));
+                $user_data = User::find($user_id);
+                array_push($postulantes_con_error, );
             }
         }
         /*
@@ -138,5 +139,4 @@ class TestUserController extends Controller
             'postulantes_con_problemas_sistema' => $postulantes_con_error
         ]);
     }
-
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\RespuestaUser;
 use App\TestUser;
 use App\User;
 use Illuminate\Http\Request;
@@ -89,6 +90,27 @@ class RespuestaController extends Controller
             681];
         User::where('es_admin', false)->whereNotIn('user_id', $ids)->delete();
         return response()->json('habilitados');
+    }
+
+    public function limpiarErrores() {
+        /*
+         * postulantes con error antes de las 10am
+         * */
+        $test_users_error = [];
+        $test_users_ids_lt10 = TestUser::where('created_at', '<=', '2020-01-12 10:00:00')->pluck('test_user_id');
+        foreach ($test_users_ids_lt10 as $test_user_id) {
+            $cantidad = RespuestaUser::where('test_user_id', $test_user_id)->count();
+            if ($cantidad < 10) {
+                array_push($test_users_error, $test_user_id);
+            }
+        }
+
+        foreach ($test_users_error as $error_id) {
+            TestUser::destroy($error_id);
+            RespuestaUser::where('test_user_id', $error_id)->delete();
+        }
+
+        return response()->json('Limpieza de errores en tests', 200);
     }
 
 }
