@@ -56,6 +56,7 @@ class UserController extends Controller
             'test_users' => $test_users
         ]);
     }
+
     public function resultadosCSV()
     {
         $request = request()->all();
@@ -73,14 +74,12 @@ class UserController extends Controller
                 ->orderBy('nota', 'desc')->get();
         }
         $cargos = Cargo::where('cargo_id', '<>', 1)->get();
-//        if (($handle = fopen('file.csv','w')) !== FALSE) {
-            $fp = fopen('file.csv', 'w');
 
-            $contenido = "Inicio de Evaluacion, Fin de Evaluacion, Postulante, Cedula de Identidad, Cargo, Nota\n";
-            foreach ($test_users as $test_user) {
-                $contenido .= "{$test_user['created_at']}, {$test_user['updated_at']}, {$test_user['user']['apellido_paterno']} {$test_user['user']['apellido_materno']} {$test_user['user']['nombres']}, {$test_user['user']['numero_carnet']}, {$test_user['user']['cargo_descripcion']}, {$test_user['nota']}\n";
-            }
-            Storage::put('file.csv', $contenido);
+        $contenido = "Inicio de Evaluacion, Fin de Evaluacion, Postulante, Cedula de Identidad, Cargo, Nota\n";
+        foreach ($test_users as $test_user) {
+            $contenido .= "{$test_user['created_at']}, {$test_user['updated_at']}, {$test_user['user']['apellido_paterno']} {$test_user['user']['apellido_materno']} {$test_user['user']['nombres']}, {$test_user['user']['numero_carnet']}, {$test_user['user']['cargo_descripcion']}, {$test_user['nota']}\n";
+        }
+        Storage::put('file.csv', $contenido);
         return \response()->download(storage_path('app/file.csv'));
     }
 
