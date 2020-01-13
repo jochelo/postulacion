@@ -78,7 +78,7 @@
 
     Fpdf::SetFont('Arial', '', 8);
     Fpdf::SetTextColor(0,0,0);
-    Fpdf::SetMargins(15, 50, 0);
+    Fpdf::SetMargins(15, 25, 0);
     Fpdf::SetLineWidth(0.1);
     //Fpdf::Line(90,180+($count*18),140,180+($count*18));
     Fpdf::ln(10);
