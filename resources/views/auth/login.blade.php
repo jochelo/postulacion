@@ -85,8 +85,11 @@
                     <div class="card-header">
                         COMUNICADO N. 3
                     </div>
-                    <div class="card-body">
+                    <div class="card-body text-center">
                         <img src="noticias/noticia3.jpeg" class="img-fluid">
+                        <br>
+                        <a href="tdrs/postulantes-habilitados.pdf" target="_blank"> <i class="fa fa-download"></i>
+                            POSTULANTES HABILITADOS PARA CONTRATACIÓN</a>
                     </div>
                 </div>
                 <br>
@@ -113,7 +116,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header text-center">
-                                <h6><strong>POSTULANTES HABILITADOS EMPADRONAMIENTO BIOMETRICO ELECCIONES GENERALES 2020</strong>
+                                <h6><strong>POSTULANTES HABILITADOS PARA CONTRATACIÓN EMPADRONAMIENTO BIOMETRICO ELECCIONES GENERALES 2020</strong>
                                 </h6>
                             </div>
                             <div class="card-body">
@@ -126,7 +129,7 @@
                                         </thead>
                                         <tbody>
                                         <tr>
-                                            <td><a href="tdrs/postulantes-habilitados.pdf" target="_blank">POSTULANTES HABILITADOS PARA CONTRATACION DIRECTA</a></td>
+                                            <td><a href="tdrs/postulantes-habilitados.pdf" target="_blank">POSTULANTES HABILITADOS PARA CONTRATACIÓN</a></td>
                                         </tr>
                                         </tbody>
                                     </table>

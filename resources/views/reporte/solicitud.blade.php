@@ -33,7 +33,7 @@
     Fpdf::cell(5, 8, "", 0, 0, 'C', false);
     Fpdf::cell(35, 8, "Cargo a Postular: ", 0, 0, 'L', false);
     Fpdf::SetFillColor(225,221,124);
-    Fpdf::cell(145, 8, $user->cargo_descripcion, 0, 1, 'C', true);
+    Fpdf::cell(145, 8, strtoupper($user->cargo_descripcion), 0, 1, 'C', true);
     Fpdf::ln(2);
     Fpdf::cell(5, 8, "", 0, 0, 'C', false);
     Fpdf::cell(35, 8, "Carnet Identidad: ", 0, 0, 'L', false);
@@ -48,25 +48,25 @@
     Fpdf::cell(5, 8, "", 0, 0, 'C', false);
     Fpdf::cell(35, 8, "Estado Civil: ", 0, 0, 'L', false);
     Fpdf::SetFillColor(225,221,124);
-    Fpdf::cell(40, 8, $user->estado_civil, 0, 0, 'C', true);
+    Fpdf::cell(40, 8, utf8_decode(strtoupper($user->estado_civil)), 0, 0, 'C', true);
     Fpdf::cell(65, 8, "Sexo: ", 0, 0, 'C', false);
     Fpdf::SetFillColor(225,221,124);
-    Fpdf::cell(40, 8, $user->sexo, 0, 1, 'C', true);
+    Fpdf::cell(40, 8, strtoupper($user->sexo), 0, 1, 'C', true);
 
     Fpdf::ln(2);
     Fpdf::cell(5, 8, "", 0, 0, 'C', false);
     Fpdf::cell(35, 8, "Lugar: ", 0, 0, 'L', false);
     Fpdf::SetFillColor(225,221,124);
-    Fpdf::cell(40, 8, utf8_decode($user->lugar), 0, 0, 'C', true);
+    Fpdf::cell(40, 8, utf8_decode(strtoupper($user->lugar)), 0, 0, 'C', true);
     Fpdf::cell(65, 8, "Nacionalidad: ", 0, 0, 'C', false);
     Fpdf::SetFillColor(225,221,124);
-    Fpdf::cell(40, 8, $user->nacionalidad, 0, 1, 'C', true);
+    Fpdf::cell(40, 8, strtoupper($user->nacionalidad), 0, 1, 'C', true);
 
     Fpdf::ln(2);
     Fpdf::cell(5, 8, "", 0, 0, 'C', false);
     Fpdf::cell(35, 8, utf8_decode("Dirección: "), 0, 0, 'L', false);
     Fpdf::SetFillColor(225,221,124);
-    Fpdf::cell(145, 8, utf8_decode($user->direccion), 0, 1, 'C', true);
+    Fpdf::cell(145, 8, utf8_decode(strtoupper($user->direccion)), 0, 1, 'C', true);
 
     Fpdf::ln(2);
     Fpdf::cell(5, 8, "", 0, 0, 'C', false);
@@ -95,7 +95,7 @@
     Fpdf::cell(40, 8, $user->casilla_postal, 0, 0, 'C', true);
     Fpdf::cell(40, 8, "No. Libreta S. Militar: ", 0, 0, 'C', false);
     Fpdf::SetFillColor(225,221,124);
-    Fpdf::cell(65, 8, utf8_decode($user->numero_libreta_militar), 0, 1, 'C', true);
+    Fpdf::cell(65, 8, utf8_decode(strtoupper($user->numero_libreta_militar)), 0, 1, 'C', true);
 
     Fpdf::ln(3);
     Fpdf::SetFont('Arial', '', 16);
@@ -136,7 +136,7 @@
     Fpdf::SetTextColor(0,0,0);
     Fpdf::SetMargins(15, 50, 0);
     Fpdf::SetLineWidth(0.1);
-    Fpdf::Line(90,230,140,230);
+    //Fpdf::Line(90,230,140,230);
 
     Fpdf::ln(50);
     Fpdf::cell(0, 4, utf8_decode($user->nombres.' '.$user->apellido_paterno.' '.$user->apellido_materno), 0, 1, 'C', false);
