@@ -83,6 +83,15 @@
                 <br>
                 <div class="card">
                     <div class="card-header">
+                        COMUNICADO N. 3
+                    </div>
+                    <div class="card-body">
+                        <img src="noticias/noticia3.jpeg" class="img-fluid">
+                    </div>
+                </div>
+                <br>
+                <div class="card">
+                    <div class="card-header">
                         COMUNICADO N. 2
                     </div>
                     <div class="card-body">
@@ -102,6 +111,29 @@
             <div class="col-md-6">
                 <div class="row">
                     <div class="col-12">
+                        <div class="card">
+                            <div class="card-header text-center">
+                                <h6><strong>POSTULANTES HABILITADOS EMPADRONAMIENTO BIOMETRICO ELECCIONES GENERALES 2020</strong>
+                                </h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                        <tr>
+                                            <th><i class="fa fa-download"></i> DESCARGAR ARCHIVO</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td><a href="tdrs/postulantes-habilitados.pdf" target="_blank">POSTULANTES HABILITADOS PARA CONTRATACION DIRECTA</a></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
                         <div class="card">
                             <div class="card-header text-center">
                                 <h6><strong>CONVOCATORIA EMPADRONAMIENTO BIOMETRICO ELECCIONES GENERALES 2020</strong>
