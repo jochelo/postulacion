@@ -4,7 +4,7 @@
 
     Fpdf::Image('./images/logo.png',20,10,30,30);
 
-    Fpdf::SetMargins(10, 70, 0);
+/*    Fpdf::SetMargins(10, 70, 0);*/
     Fpdf::SetFont('Arial', 'B', 20);
 
     Fpdf::cell(160, 15, '', 0, 0, 'R', false);
@@ -81,7 +81,7 @@
     Fpdf::SetMargins(15, 50, 0);
     Fpdf::SetLineWidth(0.1);
     //Fpdf::Line(90,180+($count*18),140,180+($count*18));
-    Fpdf::ln(50);
+    Fpdf::ln(10);
     Fpdf::cell(0, 4, utf8_decode($user->nombres.' '.$user->apellido_paterno.' '.$user->apellido_materno), 0, 1, 'C', false);
     Fpdf::cell(0, 4, "POSTULANTE", 0, 1, 'C', false);
 
