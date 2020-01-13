@@ -73,13 +73,19 @@ class UserController extends Controller
             $test_users = TestUser::whereIn('user_id', $user_ids)
                 ->orderBy('nota', 'desc')->get();
         }
-        $cargos = Cargo::where('cargo_id', '<>', 1)->get();
-
-        $contenido = "Inicio de Evaluacion, Fin de Evaluacion, Postulante, Cedula de Identidad, Cargo, Nota\n";
+        $contenido = "N., Inicio de Evaluacion, Fin de Evaluacion, Postulante, Cedula de Identidad, Cargo, Nota\n";
+        $count = 0;
         foreach ($test_users as $test_user) {
-            $contenido .= "{$test_user['created_at']}, {$test_user['updated_at']}, {$test_user['user']['apellido_paterno']} {$test_user['user']['apellido_materno']} {$test_user['user']['nombres']}, {$test_user['user']['numero_carnet']}, {$test_user['user']['cargo_descripcion']}, {$test_user['nota']}\n";
+            $count++;
+            $contenido .= "{$count}, {$test_user['created_at']}, {$test_user['updated_at']}, {$test_user['user']['apellido_paterno']} {$test_user['user']['apellido_materno']} {$test_user['user']['nombres']}, {$test_user['user']['numero_carnet']}, {$test_user['user']['cargo_descripcion']}, {$test_user['nota']}\n";
         }
-        Storage::put('file.csv', $contenido);
+        $cargo = null;
+        if ($cargo_id == 0) {
+            $cargo = 'Todos';
+        } else {
+            $cargo = Cargo::find($cargo_id)->cargo_descripcion;
+        }
+        Storage::put("{$cargo}", $contenido);
         return \response()->download(storage_path('app/file.csv'));
     }
 
