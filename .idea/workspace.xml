@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="139af3c8-ffe1-4396-bf35-c262ef3d9f70" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/resultados/resultados.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/resultados/resultados.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -209,7 +208,7 @@
       <workItem from="1578767165107" duration="27740000" />
       <workItem from="1578804031703" duration="20728000" />
       <workItem from="1578850833941" duration="9934000" />
-      <workItem from="1578867523840" duration="15324000" />
+      <workItem from="1578867523840" duration="15519000" />
     </task>
     <servers />
   </component>
@@ -231,10 +230,10 @@
     </state>
     <state x="338" y="225" key="com.intellij.ide.util.TipDialog/0.27.1360.741/0.27.1360.741@0.27.1360.741" timestamp="1578867850836" />
     <state x="339" y="225" key="com.intellij.ide.util.TipDialog/0.27.1366.741@0.27.1366.741" timestamp="1578850834057" />
-    <state x="344" y="177" key="run.anything.popup" timestamp="1578880844467">
+    <state x="344" y="177" key="run.anything.popup" timestamp="1578883898170">
       <screen x="0" y="27" width="1360" height="741" />
     </state>
-    <state x="344" y="177" key="run.anything.popup/0.27.1360.741/0.27.1360.741@0.27.1360.741" timestamp="1578880844467" />
+    <state x="344" y="177" key="run.anything.popup/0.27.1360.741/0.27.1360.741@0.27.1360.741" timestamp="1578883898170" />
     <state x="344" y="89" width="672" height="160" key="search.everywhere.popup" timestamp="1578880882287">
       <screen x="0" y="27" width="1360" height="741" />
     </state>

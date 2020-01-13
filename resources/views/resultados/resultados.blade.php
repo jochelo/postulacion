@@ -51,7 +51,7 @@
                             </div>
                         </div>
                         <div class="col-lg-4">
-                            <button type="submit" class="btn btn-secondary btn-block">GENERAR EXCEL</button>
+                            <button type="submit" class="btn btn-secondary btn-block">GENERAR CSV</button>
                         </div>
                     </div>
                 </form>
