@@ -24,6 +24,7 @@ Route::resource('/preguntas','PreguntaController')->middleware('admin');
 Route::get('preguntas-test', 'TestController@preguntasTestGet')->middleware('admin');
 Route::post('preguntas-test','TestController@preguntasTest')->middleware('admin');
 Route::get('reporte/solicitud','ReporteController@solicitud');
+Route::get('reporte/test-aprobado','ReporteController@testAprobado');
 
 /*Route::get('/evaluacion-online','TestController@evaluacionOnline')->name('evaluacion-online');*/
 Route::get('show-test','TestController@getTestInit');
