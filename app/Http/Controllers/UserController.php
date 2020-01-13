@@ -95,24 +95,7 @@ class UserController extends Controller
 
     }
     public function listaPostulantes(){
-        $usersRep=User::select('numero_carnet',DB::raw('count(numero_carnet) as total'))
-            ->where('es_admin','=',false)
-            ->groupBy('numero_carnet')
-            ->having('total','=',1)
-            ->get();
-        $users=User::get();
-        $sw=0;
-        foreach ($usersRep as $userR){
-            foreach($users as $key => $user){
-                if($user->numero_carnet == $userR->numero_carnet && $sw > 0){
-                    //
-                }
-                else{
-                    $sw=0;
-                }
-
-            }
-        }
+        $users=User::where('es_admin',false)->get()->unique('numero_carnet');
         return response()->json($users,200);
     }
 }

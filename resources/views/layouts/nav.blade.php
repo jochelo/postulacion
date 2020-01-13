@@ -39,11 +39,11 @@
     </div>
     <!-- Nav Item - Charts -->
     @guest
-    <li class="nav-item">
+   <!-- <li class="nav-item">
         <a class="nav-link" href="{{route('login')}}">
             <i class="fas fa-fw fa-user"></i>
             <span>Iniciar Sesión</span></a>
-    </li>
+    </li>-->
     <!-- Nav Item - Tables -
     <li class="nav-item">
         <a class="nav-link" href="{{route('register')}}">

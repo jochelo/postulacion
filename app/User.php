@@ -69,7 +69,7 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    protected $appends = ['cargo_descripcion', 'nivel_descripcion'];
+    protected $appends = ['cargo_descripcion'];
 
 
     public function getCargoDescripcionAttribute(){
