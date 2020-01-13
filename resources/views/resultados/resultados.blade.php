@@ -34,9 +34,34 @@
                     <div class="offset-8 col-lg-4">
                         <form action="{{ url('/resultados-csv') }}" method="post">
                             @csrf
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <div class="form-group">
+                                        <select class="form-control" name="cargo_id" id="cargo_id">
+                                            <option @if ($cargo_id == 0)
+                                                    selected="selected"
+                                                    @endif
+                                                    value="0">Todos</option>
+                                            @foreach($cargos as $cargo)
+                                                <option @if ($cargo_id == $cargo['cargo_id'])
+                                                        selected="selected"
+                                                        @endif
+                                                        value="{{ $cargo['cargo_id'] }}">{{ $cargo['cargo_descripcion'] }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4">
+                                    <button type="submit" class="btn btn-primary btn-block">GENERAR</button>
+                                </div>
+                            </div>
+                        </form>
+
+{{--                        <form action="{{ url('/resultados-csv') }}" method="post">
+                            @csrf
                             <input type="hidden" value="{{ $cargo['cargo_id'] }}">
                             <button id="render" class="btn btn-secondary btn-block">GENERAR EXCEL</button>
-                        </form>
+                        </form>--}}
                     </div>
                 </div>
                 <br>
