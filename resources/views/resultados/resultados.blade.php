@@ -30,7 +30,6 @@
                         </div>
                     </div>
                 </form>
-                <h3>{{ $cargo_id }}</h3>
                 <br>
                 <div class="table-responsive">
                     <table class="table">
