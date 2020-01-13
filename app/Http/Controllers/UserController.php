@@ -85,8 +85,8 @@ class UserController extends Controller
         } else {
             $cargo = Cargo::find($cargo_id)->cargo_descripcion;
         }
-        Storage::put("{$cargo}", $contenido);
-        return \response()->download(storage_path('app/file.csv'));
+        Storage::put("{$cargo}.csv", $contenido);
+        return \response()->download(storage_path("app/{$cargo}.csv"));
     }
 
 
