@@ -39,7 +39,7 @@ class UserController extends Controller
             $cargo_id = $request['cargo_id'];
         }
 
-        if ($cargo_id === 0) {
+        if ($cargo_id == '0' || $cargo_id == 0) {
             $test_users = TestUser::orderBy('nota', 'desc')->get();
         } else {
             $user_ids = User::where('cargo_id', $cargo_id)->pluck('user_id');
