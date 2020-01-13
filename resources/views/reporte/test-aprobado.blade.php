@@ -49,7 +49,7 @@
     Fpdf::cell(5, 8, "", 0, 0, 'C', false);
     Fpdf::cell(100, 8, utf8_decode("Datos de la Evaluación:"), 0, 1, 'L', false);
 
-    Fpdf::SetFont('Arial', '', 10);
+    Fpdf::SetFont('Arial', '', 8);
     foreach ($test_user['respuestas'] as $respuesta_user){
         Fpdf::ln(2);
         Fpdf::cell(5, 8, "", 0, 0, 'C', false);
