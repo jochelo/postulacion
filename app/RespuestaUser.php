@@ -16,11 +16,16 @@ class RespuestaUser extends Model
         'correcto',
     ];
     protected $dates = ['deleted_at'];
-    protected $appends = ['pregunta'];
+    protected $appends = ['pregunta', 'respuesta'];
 
     public function testUser()
     {
         return $this->belongsTo('App\TestUser');
+    }
+
+    public function getRespuestaAttribute()
+    {
+        return Respuesta::find($this->respuesta_id);
     }
 
     public function getPreguntaAttribute()
