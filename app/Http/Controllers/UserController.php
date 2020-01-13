@@ -149,10 +149,21 @@ class UserController extends Controller
 
         $resumenes = [];
         $cargos = Cargo::where('cargo_id','<>', 1)->get();
+        $total = [
+            'descripcion' => 'Total',
+            'postulantes' => 0,
+            'evaluados' => 0,
+            'ausentes' => 0,
+            'total' => 0,
+        ];
         foreach ($cargos as $cargo) {
             $cantidad_postulantes = User::where('cargo_id', $cargo['cargo_id'])->count();
             $users_ids = User::where('cargo_id', $cargo['cargo_id'])->pluck('user_id');
             $evaluados = TestUser::whereIn('user_id', $users_ids)->count();
+            $total['postulantes'] += $cantidad_postulantes;
+            $total['evaluados'] += $evaluados;
+            $total['ausentes'] += $cantidad_postulantes - $evaluados;
+            $total['total'] += $evaluados + ($cantidad_postulantes - $evaluados);
             array_push($resumenes, [
                 'cargo' => $cargo['cargo_descripcion'],
                 'cantidad_postulantes' => $cantidad_postulantes,
@@ -162,7 +173,10 @@ class UserController extends Controller
             ]);
         }
 
-        return view('resultados.resumen', $resumenes);
+        return view('resultados.resumen', [
+            'resumenes' => $resumenes,
+            'total' => $total,
+        ]);
     }
 
 

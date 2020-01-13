@@ -21,7 +21,7 @@
                         <tbody>
                         @foreach($resumenes as $resumen)
                             <tr>
-                                <td>{{ $loop->index }}</td>
+                                <td>{{ $loop->index + 1 }}</td>
                                 <td>{{ $resumen['cargo'] }}</td>
                                 <td>{{ $resumen['cantidad_postulantes'] }}</td>
                                 <td>{{ $resumen['evaluados'] }}</td>
@@ -29,6 +29,14 @@
                                 <td>{{ $resumen['total'] }}</td>
                             </tr>
                         @endforeach
+                        <tr>
+                            <td></td>
+                            <td><strong>{{ $total['descripcion'] }}</strong></td>
+                            <td><strong>{{ $total['postulantes'] }}</strong></td>
+                            <td><strong>{{ $total['evaluados'] }}</strong></td>
+                            <td><strong>{{ $total['ausentes'] }}</strong></td>
+                            <td><strong>{{ $total['total'] }}</strong></td>
+                        </tr>
                         </tbody>
                     </table>
                 </div>
