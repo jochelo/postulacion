@@ -66,7 +66,7 @@
             Fpdf::multicell(165, 8, utf8_decode($respuesta_user['respuesta']['respuesta_descripcion']), 0, 'L', 0);
         }
         $count++;
-        if ($count === 7) {
+        if ($count === 6) {
             Fpdf::AddPage('P','Letter');
         }
 
