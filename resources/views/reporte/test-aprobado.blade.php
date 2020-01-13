@@ -67,6 +67,10 @@
             Fpdf::multicell(165, 8, utf8_decode($respuesta_user['respuesta']['respuesta_descripcion']), 0, 'L', 0);
         }
         $count++;
+        if ($count === 7) {
+            Fpdf::AddPage('P','Letter');
+        }
+
     }
     Fpdf::SetFont('Arial', 'I', 10);
 
@@ -78,7 +82,7 @@
 
     Fpdf::SetFont('Arial', '', 8);
     Fpdf::SetTextColor(0,0,0);
-    Fpdf::SetMargins(15, 35, 0);
+    Fpdf::SetMargins(15, 40, 0);
     Fpdf::SetLineWidth(0.1);
     //Fpdf::Line(90,180+($count*18),140,180+($count*18));
     Fpdf::ln(10);
