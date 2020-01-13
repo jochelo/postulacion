@@ -50,8 +50,7 @@ class UserController extends Controller
         $cargos = Cargo::where('cargo_id', '<>', 1)->get();
         return view('resultados.resultados', [
             'cargos' => $cargos,
-            'cargo' => $test_users[0]['cargo_descripcion'],
-            'cargo_id' => 0,
+            'cargo_id' => $cargo_id,
             'test_users' => $test_users
         ]);
     }
