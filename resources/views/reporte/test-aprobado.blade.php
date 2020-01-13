@@ -68,9 +68,9 @@
         }
         $count++;
     }
-    Fpdf::SetFont('Arial', 'I', 12);
+    Fpdf::SetFont('Arial', 'I', 10);
 
-/*    Fpdf::ln(7);*/
+    Fpdf::ln(7);
     Fpdf::SetTextColor(231,168,17);
     Fpdf::cell(190, 8, "Mi persona cuenta con disponibilidad total de tiempo para viajes al interior del departamento.", 0, 1, 'C', false);
     Fpdf::ln(1);
@@ -78,7 +78,7 @@
 
     Fpdf::SetFont('Arial', '', 8);
     Fpdf::SetTextColor(0,0,0);
-    Fpdf::SetMargins(15, 25, 0);
+    Fpdf::SetMargins(15, 35, 0);
     Fpdf::SetLineWidth(0.1);
     //Fpdf::Line(90,180+($count*18),140,180+($count*18));
     Fpdf::ln(10);
