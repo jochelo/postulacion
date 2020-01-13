@@ -30,6 +30,15 @@
                         </div>
                     </div>
                 </form>
+                <div class="row">
+                    <div class="offset-8 col-lg-4">
+                        <form action="{{ url('/resultados-csv') }}" method="post">
+                            @csrf
+                            <input type="hidden" value="{{ $cargo['cargo_id'] }}">
+                            <button id="render" class="btn btn-secondary btn-block">GENERAR EXCEL</button>
+                        </form>
+                    </div>
+                </div>
                 <br>
                 <div class="table-responsive">
                     <table class="table">
@@ -58,4 +67,12 @@
             </div>
         </div>
     </div>
+    <script>
+        var render = document.getElementById('render');
+        render.addEventListener('click', function () {
+            var test_users = document.getElementById('test_users');
+            console.log(test_users);
+        });
+    </script>
 @endsection
+

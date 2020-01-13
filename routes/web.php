@@ -31,5 +31,6 @@ Route::post('show-test','TestController@testInit');
 Route::get('resumen','TestUserController@resumen')->middleware('admin');
 Route::post('resultados','UserController@resultados')->middleware('admin');
 Route::post('resumen-cargo','UserController@resumenCargo')->middleware('admin');
+Route::post('resultados-csv','UserController@resultadosCSV')->middleware('admin');
 
 

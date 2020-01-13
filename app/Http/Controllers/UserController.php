@@ -48,12 +48,56 @@ class UserController extends Controller
                 ->orderBy('nota', 'desc')->get();
         }
         $cargos = Cargo::where('cargo_id', '<>', 1)->get();
+
         return view('resultados.resultados', [
             'cargos' => $cargos,
             'cargo_id' => $cargo_id,
             'test_users' => $test_users
         ]);
     }
+    public function resultadosCSV()
+    {
+        $request = request()->all();
+        $cargo_id = 0;
+        $test_users = null;
+        if (isset($request['cargo_id'])) {
+            $cargo_id = $request['cargo_id'];
+        }
+
+        if ($cargo_id == '0' || $cargo_id == 0) {
+            $test_users = TestUser::orderBy('nota', 'desc')->get();
+        } else {
+            $user_ids = User::where('cargo_id', $cargo_id)->pluck('user_id');
+            $test_users = TestUser::whereIn('user_id', $user_ids)
+                ->orderBy('nota', 'desc')->get();
+        }
+        $cargos = Cargo::where('cargo_id', '<>', 1)->get();
+        $fp = fopen('file.csv', 'w');
+
+        fputcsv($fp, [
+            'Inicio de Evaluacion',
+            'Fin de Evaluacion',
+            'Postulante',
+            'Cedula de Identidad',
+            'Cargo',
+            'Nota',
+        ]);
+
+        foreach ($test_users as $test_user) {
+            fputcsv($fp, [
+                $test_user['created_at'],
+                $test_user['updated_at'],
+                "{$test_user['user']['apellido_paterno']} {$test_user['user']['apellido_materno']} {$test_user['user']['nombres']}",
+                $test_user['user']['numero_carnet'],
+                $test_user['user']['cargo_descripcion'],
+                $test_user['nota'],
+            ]);
+        }
+        fclose($fp);
+
+        return \response()->download(public_path('file.csv'));
+    }
+
 
     /**
      * Show the form for creating a new resource.
