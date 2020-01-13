@@ -62,6 +62,7 @@
                         <tr>
                             <th>N.</th>
                             <th>Postulante</th>
+                            <th>Celular</th>
                             <th>Cedula de Identidad</th>
                             <th>Cargo</th>
                             <th>Nota</th>
@@ -72,6 +73,7 @@
                         <tr>
                             <td>{{ $loop->index + 1}}</td>
                             <td>{{ $test_user['user']['apellido_paterno'] }} {{ $test_user['user']['apellido_materno'] }} {{ $test_user['user']['nombres'] }}</td>
+                            <td>{{ $test_user['user']['telefono_celular'] }}</td>
                             <td>{{ $test_user['user']['numero_carnet'] }}</td>
                             <td>{{ $test_user['user']['cargo_descripcion'] }}</td>
                             <td>{{ $test_user['nota'] }}</td>
