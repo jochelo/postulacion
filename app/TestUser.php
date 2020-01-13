@@ -17,13 +17,16 @@ class TestUser extends Model
         'nivel_id',
     ];
     protected $dates=['deleted_at'];
-    protected $appends = ['user'];
+    protected $appends = ['user', 'respuestas'];
     public function respuestaUsers(){
         return $this->hasMany('App\RespuestaUser');
     }
 
     public function getUserAttribute() {
         return User::find($this->user_id);
+    }
+    public function getRespuestasAttribute() {
+        return RespuestaUser::where('test_user_id', $this->getKey())->get();
     }
 
 }
