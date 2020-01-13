@@ -23,7 +23,8 @@ class ReporteController extends Controller
         $user = Auth::user();
         $test_user = TestUser::where('user_id', $user['user_id'])->first();
         return view('reporte.test-aprobado', [
-            'test_user' => $test_user
+            'test_user' => $test_user,
+            'user' => $user
         ]);
     }
 }
