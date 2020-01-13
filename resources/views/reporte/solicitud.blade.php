@@ -6,7 +6,7 @@
 
     Fpdf::ln(5);
 
-    Fpdf::SetFont('Arial', 'B', 20);
+    Fpdf::SetFont('Arial', 'B', 16);
     Fpdf::SetMargins(15, 50, 0);
     Fpdf::cell(0, 20, utf8_decode("REGISTRO DE POSTULACIÓN"), 0, 1, 'C', false);
     // datos del cliente
