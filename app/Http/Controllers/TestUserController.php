@@ -105,7 +105,7 @@ class TestUserController extends Controller
                 $postulantes_con_error_count++;
                 $user_id = TestUser::find($test_user_id)->user_id;
                 $user_data = User::find($user_id);
-                array_push($postulantes_con_error, );
+                array_push($postulantes_con_error, $user_data);
             }
         }
         /*
@@ -139,4 +139,28 @@ class TestUserController extends Controller
             'postulantes_con_problemas_sistema' => $postulantes_con_error
         ]);
     }
+
+
+    public function limpiarErrores() {
+        /*
+         * postulantes con error antes de las 10am
+         * */
+        $test_users_error = [];
+        $test_users_ids_lt10 = TestUser::where('created_at', '<=', '2020-01-12 10:00:00')->pluck('test_user_id');
+        foreach ($test_users_ids_lt10 as $test_user_id) {
+            $cantidad = RespuestaUser::where('test_user_id', $test_user_id)->count();
+            if ($cantidad < 10) {
+                array_push($test_users_error, $test_user_id);
+            }
+        }
+
+        foreach ($test_users_error as $error_id) {
+            TestUser::destroy($error_id);
+            RespuestaUser::where('test_user_id', $error_id)->delete();
+        }
+
+        return response()->json('Limpieza de errores en tests', 200);
+
+    }
+
 }
