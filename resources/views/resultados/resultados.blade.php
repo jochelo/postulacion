@@ -12,12 +12,12 @@
                         <div class="col-lg-8">
                             <div class="form-group">
                                 <select class="form-control" name="cargo_id" id="cargo_id">
-                                    <option @if ($cargo_id === 0)
+                                    <option @if ($cargo_id == 0)
                                             selected="selected"
                                             @endif
                                             value="0">Todos</option>
                                     @foreach($cargos as $cargo)
-                                        <option @if ($cargo_id === $cargo['cargo_id'])
+                                        <option @if ($cargo_id == $cargo['cargo_id'])
                                                 selected="selected"
                                                 @endif
                                                 value="{{ $cargo['cargo_id'] }}">{{ $cargo['cargo_descripcion'] }}</option>
@@ -30,6 +30,7 @@
                         </div>
                     </div>
                 </form>
+                <h3>{{ $cargo['cargo_descripcion'] }}</h3>
                 <br>
                 <div class="table-responsive">
                     <table class="table">

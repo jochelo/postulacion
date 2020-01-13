@@ -31,7 +31,8 @@ class UserController extends Controller
         return view('user.index', compact('users'));
     }
 
-    public function resultados() {
+    public function resultados()
+    {
         $request = request()->all();
         $cargo_id = 0;
         $test_users = null;
@@ -44,11 +45,12 @@ class UserController extends Controller
         } else {
             $user_ids = User::where('cargo_id', $cargo_id)->pluck('user_id');
             $test_users = TestUser::whereIn('user_id', $user_ids)
-                                    ->orderBy('nota', 'desc')->get();
+                ->orderBy('nota', 'desc')->get();
         }
-        $cargos = Cargo::get();
+        $cargos = Cargo::where('cargo_id', '<>', 1)->get();
         return view('resultados.resultados', [
             'cargos' => $cargos,
+            'cargo' => $cargos[0],
             'cargo_id' => 0,
             'test_users' => $test_users
         ]);
@@ -145,10 +147,11 @@ class UserController extends Controller
         return response()->json($users, 200);
     }
 
-    public function resumenCargo() {
+    public function resumenCargo()
+    {
 
         $resumenes = [];
-        $cargos = Cargo::where('cargo_id','<>', 1)->get();
+        $cargos = Cargo::where('cargo_id', '<>', 1)->get();
         $total = [
             'descripcion' => 'Total',
             'postulantes' => 0,
@@ -178,13 +181,6 @@ class UserController extends Controller
             'total' => $total,
         ]);
     }
-
-
-
-
-
-
-
 
 
 }
