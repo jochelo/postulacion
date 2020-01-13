@@ -8,6 +8,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -72,32 +73,15 @@ class UserController extends Controller
                 ->orderBy('nota', 'desc')->get();
         }
         $cargos = Cargo::where('cargo_id', '<>', 1)->get();
-        if (($handle = fopen('file.csv','w')) !== FALSE) {
+//        if (($handle = fopen('file.csv','w')) !== FALSE) {
             $fp = fopen('file.csv', 'w');
 
-            fputcsv($fp, [
-                'Inicio de Evaluacion',
-                'Fin de Evaluacion',
-                'Postulante',
-                'Cedula de Identidad',
-                'Cargo',
-                'Nota',
-            ]);
-
+            $contenido = "Inicio de Evaluacion, Fin de Evaluacion, Postulante, Cedula de Identidad, Cargo, Nota\n";
             foreach ($test_users as $test_user) {
-                fputcsv($fp, [
-                    $test_user['created_at'],
-                    $test_user['updated_at'],
-                    "{$test_user['user']['apellido_paterno']} {$test_user['user']['apellido_materno']} {$test_user['user']['nombres']}",
-                    $test_user['user']['numero_carnet'],
-                    $test_user['user']['cargo_descripcion'],
-                    $test_user['nota'],
-                ]);
+                $contenido .= "{$test_user['created_at']}, {$test_user['updated_at']}, {$test_user['user']['apellido_paterno']} {$test_user['user']['apellido_materno']} {$test_user['user']['nombres']}, {$test_user['user']['numero_carnet']}, {$test_user['user']['cargo_descripcion']}, {$test_user['nota']}\n";
             }
-            fclose($fp);
-        }
-
-        return \response()->download(public_path('file.csv'));
+            Storage::put('file.csv', $contenido);
+        return \response()->download(storage_path('app/file.csv'));
     }
 
 
