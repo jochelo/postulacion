@@ -11,7 +11,7 @@
     Fpdf::cell(30, 25, $test_user['nota'].'', 1, 1, 'C', false);
     Fpdf::SetFont('Arial', 'B', 8);
     Fpdf::cell(160, 6, '', 0, 0, 'R', false);
-    Fpdf::cell(30, 6, utf8_decode('NOTA'),0, 1, 'C', false);
+    Fpdf::cell(30, 6, utf8_decode('NOTA'),1, 1, 'C', false);
 
 
     Fpdf::SetFont('Arial', 'B', 16);
