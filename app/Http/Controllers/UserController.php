@@ -73,11 +73,11 @@ class UserController extends Controller
             $test_users = TestUser::whereIn('user_id', $user_ids)
                 ->orderBy('nota', 'desc')->get();
         }
-        $contenido = "N., Inicio de Evaluacion, Fin de Evaluacion, Postulante, Cedula de Identidad, Cargo, Nota\n";
+        $contenido = "N., Inicio de Evaluacion, Fin de Evaluacion, Postulante, Sexo, Cedula de Identidad, Fecha Nacimiento, Lugar, Celular, Correo Electronico, Numero Libreta Militar, Grado Academico, Gestion Academica, Institucion Academica, Titulo Academico, Cargo, Nota\n";
         $count = 0;
         foreach ($test_users as $test_user) {
             $count++;
-            $contenido .= "{$count}, {$test_user['created_at']}, {$test_user['updated_at']}, {$test_user['user']['apellido_paterno']} {$test_user['user']['apellido_materno']} {$test_user['user']['nombres']}, {$test_user['user']['numero_carnet']}, {$test_user['user']['cargo_descripcion']}, {$test_user['nota']}\n";
+            $contenido .= "{$count}, {$test_user['created_at']}, {$test_user['updated_at']}, {$test_user['user']['apellido_paterno']} {$test_user['user']['apellido_materno']} {$test_user['user']['nombres']}, {$test_user['user']['sexo']}, {$test_user['user']['numero_carnet']}, {$test_user['user']['fecha_nacimiento']}, {$test_user['user']['lugar']}, {$test_user['user']['telefono_celular']}, {$test_user['user']['email']}, {$test_user['user']['numero_libreta_militar']}, {$test_user['user']['academico_grado']}, {$test_user['user']['academico_gestion']}, {$test_user['user']['academico_institucion']}, {$test_user['user']['academico_titulo']}, {$test_user['user']['cargo_descripcion']}, {$test_user['nota']}\n";
         }
         $cargo = null;
         if ($cargo_id == 0) {
