@@ -14,9 +14,8 @@
     Fpdf::cell(30, 6, utf8_decode('NOTA'),0, 1, 'C', false);
 
 
-
-    Fpdf::SetFont('Arial', 'B', 20);
-    Fpdf::cell(0, 15, utf8_decode("EVALUACIÓN"), 0, 1, 'C', false);
+    Fpdf::SetFont('Arial', 'B', 16);
+    Fpdf::cell(0, 12, utf8_decode("EVALUACIÓN"), 0, 1, 'C', false);
     // datos del cliente
 
     Fpdf::SetFont('Arial', '', 16);
@@ -82,7 +81,7 @@
 
     Fpdf::SetFont('Arial', '', 8);
     Fpdf::SetTextColor(0,0,0);
-    Fpdf::SetMargins(15, 40, 0);
+    Fpdf::SetMargins(15, 50, 0);
     Fpdf::SetLineWidth(0.1);
     //Fpdf::Line(90,180+($count*18),140,180+($count*18));
     Fpdf::ln(50);
