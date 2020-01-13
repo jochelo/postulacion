@@ -70,11 +70,12 @@
                 </div>
             </div>
         </div>
-        <div class="alert alert-warning" role="alert">
-            <h4 class="alert-heading">¡Felicidades! Usted ha concluido la Evaluación!</h4>
-            <p>Dirijase al Menu, Documentación para descargar los documentos requeridos para terminar su tramite.</p>
-            <hr>
-
+        <div class="container">
+            <div class="alert alert-warning" role="alert">
+                <h4 class="alert-heading">¡Felicidades! Usted ha concluido la Evaluación!</h4>
+                <p>Por favor espere la lista de habilitados a traves de la plataforma. Despues de las 9pm del dia de hoy Domingo 12 de enero</p>
+                <hr>
+            </div>
         </div>
     @endif
 @endsection

@@ -18,7 +18,7 @@
         </div>
     </div>
     <br>
-    <div class="container">
+{{--    <div class="container">
         @if(isset($testUser))
             <div class="row">
                 <div class="offset-3 col-lg-6">
@@ -34,5 +34,5 @@
                 </div>
             </div>
         @endif
-    </div>
+    </div>--}}
 @endsection

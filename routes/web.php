@@ -25,6 +25,12 @@ Route::get('preguntas-test', 'TestController@preguntasTestGet')->middleware('adm
 Route::post('preguntas-test','TestController@preguntasTest')->middleware('admin');
 Route::get('reporte/solicitud','ReporteController@solicitud');
 
-Route::get('/evaluacion-online','TestController@evaluacionOnline')->name('evaluacion-online');
+/*Route::get('/evaluacion-online','TestController@evaluacionOnline')->name('evaluacion-online');*/
+Route::get('show-test','TestController@getTestInit');
 Route::post('show-test','TestController@testInit');
+Route::get('resumen','TestUserController@resumen')->middleware('admin');
+Route::post('resultados','UserController@resultados')->middleware('admin');
+Route::post('resumen-cargo','UserController@resumenCargo')->middleware('admin');
+Route::post('resultados-csv','UserController@resultadosCSV')->middleware('admin');
+
 
