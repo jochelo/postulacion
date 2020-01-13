@@ -132,8 +132,11 @@
 
     Fpdf::cell(190, 10, "Mi persona cuenta con disponibilidad total de tiempo para viajes al interior del departamento.", 0, 1, 'C', false);
 
+
     Fpdf::SetFont('Arial', '', 8);
     Fpdf::SetTextColor(0,0,0);
+    Fpdf::cell(190, 8, utf8_decode("Presentar este documento en oficinas de Recursos Humanos de SERECÍ - ORURO"), 0, 1, 'C', false);
+
     Fpdf::SetMargins(15, 50, 0);
     Fpdf::SetLineWidth(0.1);
     //Fpdf::Line(90,230,140,230);
