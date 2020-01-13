@@ -7,7 +7,6 @@ use App\TestUser;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
@@ -160,33 +159,11 @@ class UserController extends Controller
         return redirect('users/');
 
     }
-<<<<<<< HEAD
-    public function listaPostulantes(){
-        $users=User::where('es_admin',false)->get()->unique('numero_carnet');
-        return response()->json($users,200);
-=======
 
     public function listaPostulantes()
     {
-        $usersRep = User::select('numero_carnet', DB::raw('count(numero_carnet) as total'))
-            ->where('es_admin', '=', false)
-            ->groupBy('numero_carnet')
-            ->having('total', '=', 1)
-            ->get();
-        $users = User::get();
-        $sw = 0;
-        foreach ($usersRep as $userR) {
-            foreach ($users as $key => $user) {
-                if ($user->numero_carnet == $userR->numero_carnet && $sw > 0) {
-                    //
-                } else {
-                    $sw = 0;
-                }
-
-            }
-        }
+        $users = User::where('es_admin', false)->get()->unique('numero_carnet');
         return response()->json($users, 200);
->>>>>>> 75cc83556666e8f403c573781faae0cb610854ef
     }
 
     public function resumenCargo()

@@ -119,11 +119,11 @@
     Fpdf::cell(5, 8, "", 0, 0, 'C', false);
     Fpdf::cell(35, 8, "Grado Academico: ", 0, 0, 'L', false);
     Fpdf::SetFillColor(225,221,124);
-    Fpdf::cell(40, 8, utf8_decode($user->academico_grado), 0, 0, 'C', true);
+    Fpdf::cell(40, 8, utf8_decode(strtoupper($user->academico_grado)), 0, 0, 'C', true);
     Fpdf::cell(40, 8, "Inst. Academica: ", 0, 0, 'C', false);
     Fpdf::SetFillColor(225,221,124);
     Fpdf::SetFont('Arial', '', 6);
-    Fpdf::cell(65, 8, utf8_decode($user->academico_institucion), 0, 1, 'C', true);
+    Fpdf::cell(65, 8, utf8_decode(strtoupper($user->academico_institucion)), 0, 1, 'C', true);
 
     Fpdf::SetFont('Arial', 'I', 12);
 
