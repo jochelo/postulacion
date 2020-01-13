@@ -30,7 +30,7 @@
                         </div>
                     </div>
                 </form>
-                <h3>{{ $cargo['cargo_descripcion'] }}</h3>
+                <h3>{{ $cargo }}</h3>
                 <br>
                 <div class="table-responsive">
                     <table class="table">
