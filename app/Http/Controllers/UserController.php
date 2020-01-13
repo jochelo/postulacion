@@ -144,4 +144,33 @@ class UserController extends Controller
         }
         return response()->json($users, 200);
     }
+
+    public function resumenCargo() {
+
+        $resumenes = [];
+        $cargos = Cargo::where('cargo_id','<>', 1)->get();
+        foreach ($cargos as $cargo) {
+            $cantidad_postulantes = User::where('cargo_id', $cargo['cargo_id'])->count();
+            $users_ids = User::where('cargo_id', $cargo['cargo_id'])->pluck('user_id');
+            $evaluados = TestUser::whereIn('user_id', $users_ids)->count();
+            array_push($resumenes, [
+                'cargo' => $cargo['cargo_descripcion'],
+                'cantidad_postulantes' => $cantidad_postulantes,
+                'evaluados' => $evaluados,
+                'ausentes' => $cantidad_postulantes - $evaluados,
+                'total' => $evaluados + ($cantidad_postulantes - $evaluados),
+            ]);
+        }
+
+        return view('resultados.resumen', $resumenes);
+    }
+
+
+
+
+
+
+
+
+
 }

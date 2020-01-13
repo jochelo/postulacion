@@ -53,6 +53,14 @@
     @else
         @if(Auth::user()->es_admin)
         <li class="nav-item">
+            <form action="{{ url('/resumen-cargo') }}" method="post">
+                @csrf
+                <button class="nav-link" type="submit">
+                    <i class="fas fa-fw fa-list-alt"></i>
+                    <span>Resumen por Cargo</span></button>
+            </form>
+        </li>
+        <li class="nav-item">
             <a class="nav-link" href="{{url('/resumen')}}">
                 <i class="fas fa-fw fa-file"></i>
                 <span>Resumen General</span></a>
