@@ -8,17 +8,25 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class RespuestaUser extends Model
 {
     use SoftDeletes;
-    protected $table='respuesta_users';
-    protected $primaryKey='respuesta_id';
-    protected $fillable=[
+    protected $table = 'respuesta_users';
+    protected $primaryKey = 'respuesta_id';
+    protected $fillable = [
         'test_user_id',
         'respuesta_id',
         'correcto',
     ];
-    protected $dates=['deleted_at'];
+    protected $dates = ['deleted_at'];
+    protected $appends = ['pregunta'];
 
-    public function testUser(){
+    public function testUser()
+    {
         return $this->belongsTo('App\TestUser');
+    }
+
+    public function getPreguntaAttribute()
+    {
+        $pregunta_id = Respuesta::find($this->getKey())->pregunta_id;
+        return Pregunta::find($pregunta_id);
     }
 }
 
