@@ -70,7 +70,7 @@
     }
     Fpdf::SetFont('Arial', 'I', 12);
 
-    Fpdf::ln(7);
+/*    Fpdf::ln(7);*/
     Fpdf::SetTextColor(231,168,17);
     Fpdf::cell(190, 8, "Mi persona cuenta con disponibilidad total de tiempo para viajes al interior del departamento.", 0, 1, 'C', false);
     Fpdf::ln(1);
