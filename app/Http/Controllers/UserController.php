@@ -46,7 +46,9 @@ class UserController extends Controller
         } else {
             $user_ids = User::where('cargo_id', $cargo_id)->pluck('user_id');
             $test_users = TestUser::whereIn('user_id', $user_ids)
-                ->orderBy('nota', 'desc')->get();
+                ->orderBy('nota', 'desc')
+                ->orderBy('created_at', 'desc')
+                ->get();
         }
         $cargos = Cargo::where('cargo_id', '<>', 1)->get();
 
@@ -71,7 +73,9 @@ class UserController extends Controller
         } else {
             $user_ids = User::where('cargo_id', $cargo_id)->pluck('user_id');
             $test_users = TestUser::whereIn('user_id', $user_ids)
-                ->orderBy('nota', 'desc')->get();
+                ->orderBy('nota', 'desc')
+                ->orderBy('created_at', 'desc')
+                ->get();
         }
         $contenido = "N., Inicio de Evaluacion, Fin de Evaluacion, Postulante, Sexo, Cedula de Identidad, Fecha Nacimiento, Lugar, Celular, Correo Electronico, Numero Libreta Militar, Grado Academico, Gestion Academica, Institucion Academica, Titulo Academico, Cargo, Nota\n";
         $count = 0;
