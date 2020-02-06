@@ -44,12 +44,11 @@
             <i class="fas fa-fw fa-user"></i>
             <span>Iniciar Sesión</span></a>
     </li>-->
-    <!-- Nav Item - Tables -
     <li class="nav-item">
         <a class="nav-link" href="{{route('register')}}">
             <i class="fas fa-fw fa-sign-in-alt"></i>
             <span>Postulación</span></a>
-    </li>-->
+    </li>
     @else
         @if(Auth::user()->es_admin)
         <li class="nav-item">
@@ -98,11 +97,11 @@
                 <i class="fas fa-fw fa-file"></i>
                 <span>Documentación</span></a>
         </li>
-{{--        <li class="nav-item">
+        <li class="nav-item">
             <a class="nav-link" href="{{url('/evaluacion-online')}}">
                 <i class="fas fa-fw fa-pen-square"></i>
                 <span>Evaluación Online</span></a>
-        </li>--}}
+        </li>
         @endif
     @endguest
     <!-- Divider -->
