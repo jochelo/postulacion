@@ -47,10 +47,11 @@ class RegisterController extends Controller
 
     public function showRegistrationForm()
     {
-        $cargos = Cargo::where('cargo_descripcion', '<>', 'Administrador')
+        /*$cargos = Cargo::where('cargo_descripcion', '<>', 'Administrador')
             ->orderBy('cargo_descripcion')
             ->get();
-        return view('auth.register', ['cargos' => $cargos]);
+        return view('auth.register', ['cargos' => $cargos]);*/
+        return view('auth.register', ['cargos' => []]);
     }
 
     /**
